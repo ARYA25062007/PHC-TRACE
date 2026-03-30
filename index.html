@@ -4,70 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PHC-TRACE v5.0</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Gujarati:wght@400;600&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Sans+Malayalam:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 <style>
 :root{--mohfw-blue:#1e40af;--mohfw-green:#10b981;--mohfw-light:#eff6ff;--mohfw-dark:#1e3a5f;--accent:#f59e0b;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:#f0f4ff;min-height:100vh;}
-.devanagari{font-family:'Noto Sans Devanagari',sans-serif;}
-/* Header */
-.app-header{background:linear-gradient(135deg,var(--mohfw-dark),var(--mohfw-blue));color:#fff;padding:10px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(30,64,175,.4);}
-.logo-row{display:flex;align-items:center;gap:8px;}
-.logo-badge{background:var(--mohfw-green);border-radius:8px;padding:4px 8px;font-weight:700;font-size:13px;letter-spacing:.5px;}
-.status-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;}
-.dot-green{background:#22c55e;box-shadow:0 0 6px #22c55e;}
-.dot-red{background:#ef4444;}
-/* Cards */
-.card-section{background:#fff;border-radius:16px;padding:16px;margin:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
-.section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:#64748b;margin-bottom:12px;}
-/* Symptom pills */
-.symptom-pill{border:2px solid #e2e8f0;border-radius:24px;padding:8px 16px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;background:#fff;display:inline-flex;align-items:center;gap:6px;}
-.symptom-pill.active{border-color:var(--mohfw-blue);background:var(--mohfw-light);color:var(--mohfw-blue);}
-.symptom-pill:hover{border-color:var(--mohfw-blue);}
-/* Voice btn */
-.voice-btn{background:linear-gradient(135deg,var(--mohfw-blue),#3b82f6);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%;justify-content:center;transition:all .2s;}
-.voice-btn.listening{background:linear-gradient(135deg,#dc2626,#ef4444);animation:pulse 1s infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 10px rgba(239,68,68,0)}}
-/* Beds */
-.bed-bar{height:8px;border-radius:4px;background:#e2e8f0;overflow:hidden;margin:4px 0;}
-.bed-fill{height:100%;border-radius:4px;transition:width .5s;}
-.bed-free{background:var(--mohfw-green);}
-.bed-low{background:var(--accent);}
-.bed-critical{background:#ef4444;}
-/* Doctor cards */
-.doctor-card{border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;position:relative;transition:all .2s;}
-.doctor-card:hover{border-color:var(--mohfw-blue);box-shadow:0 2px 8px rgba(30,64,175,.15);}
-.slot-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;}
-/* Best match */
-.best-match{background:linear-gradient(135deg,#eff6ff,#ecfdf5);border:2px solid var(--mohfw-blue);border-radius:16px;padding:16px;margin:12px;}
-.ai-badge{background:var(--mohfw-blue);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:.5px;}
-/* Book btn */
-.book-btn{background:linear-gradient(135deg,var(--mohfw-green),#059669);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;box-shadow:0 4px 15px rgba(16,185,129,.3);}
-.book-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(16,185,129,.4);}
-/* Tabs */
-.nav-tabs .nav-link{font-size:13px;font-weight:500;color:#64748b;}
-.nav-tabs .nav-link.active{color:var(--mohfw-blue);border-color:var(--mohfw-blue) var(--mohfw-blue) #fff;}
-/* Language section */
-.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
-.lang-card{border:2px solid #e2e8f0;border-radius:10px;padding:10px;cursor:pointer;transition:all .2s;text-align:center;background:#fff;}
-.lang-card.selected{border-color:var(--mohfw-blue);background:var(--mohfw-light);}
-.lang-card:hover{border-color:#93c5fd;}
-.lang-name{font-size:13px;font-weight:600;color:#1e293b;}
-.lang-native{font-size:15px;color:var(--mohfw-blue);}
-/* Modal */
-.modal-header{background:linear-gradient(135deg,var(--mohfw-dark),var(--mohfw-blue));color:#fff;}
-/* Toast */
-.toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;}
-/* Bottom nav */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;display:flex;z-index:99;box-shadow:0 -2px 12px rgba(0,0,0,.08);}
-.nav-item-btn{flex:1;border:none;background:none;padding:10px 4px 6px;font-size:10px;font-weight:500;color:#94a3b8;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .2s;}
-.nav-item-btn.active{color:var(--mohfw-blue);}
-.nav-icon{font-size:20px;}
-.content-wrap{padding-bottom:70px;}
-/* Dark Mode */
 body.dark{background:#0f172a;color:#e2e8f0;}
 body.dark .app-header{background:linear-gradient(135deg,#020617,#0f172a);}
 body.dark .card-section,body.dark .best-match,body.dark .doctor-card{background:#1e293b;border-color:#334155;color:#e2e8f0;}
@@ -77,6 +20,7 @@ body.dark .symptom-pill{background:#1e293b;border-color:#334155;color:#cbd5e1;}
 body.dark .symptom-pill.active{background:#1e3a5f;border-color:#3b82f6;color:#93c5fd;}
 body.dark .bed-bar{background:#334155;}
 body.dark .doctor-card{background:#1e293b;border-color:#334155;}
+body.dark .doctor-card.selected-doc{border-color:#10b981;background:#0d2e22;}
 body.dark .search-box{background:#1e293b;border-color:#334155;color:#e2e8f0;}
 body.dark .search-box::placeholder{color:#64748b;}
 body.dark .bottom-nav{background:#0f172a;border-color:#1e293b;}
@@ -91,41 +35,68 @@ body.dark .modal-body{background:#1e293b;}
 body.dark #bookingSummary>div{background:#0f172a;}
 body.dark .slot-free{background:#14532d;color:#86efac;}
 body.dark .slot-booked{background:#7f1d1d;color:#fca5a5;}
-body.dark [style*="background:#f0f9ff"],[style*="background:#f0f4ff"]{background:#1e293b!important;}
-body.dark [style*="color:#64748b"]{color:#94a3b8!important;}
-body.dark [style*="color:#1e293b"]{color:#e2e8f0!important;}
-body.dark [style*="color:#94a3b8"]{color:#64748b!important;}
-body.dark [style*="border:1px solid #e2e8f0"]{border-color:#334155!important;}
-body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8f0!important;}
-/* MoHFW Badge */
+.app-header{background:linear-gradient(135deg,var(--mohfw-dark),var(--mohfw-blue));color:#fff;padding:10px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(30,64,175,.4);}
+.logo-badge{background:var(--mohfw-green);border-radius:8px;padding:4px 8px;font-weight:700;font-size:13px;}
+.status-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;}
+.dot-green{background:#22c55e;box-shadow:0 0 6px #22c55e;}
+.dot-red{background:#ef4444;}
+.card-section{background:#fff;border-radius:16px;padding:16px;margin:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:#64748b;margin-bottom:12px;}
+.symptom-pill{border:2px solid #e2e8f0;border-radius:24px;padding:8px 16px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;background:#fff;display:inline-flex;align-items:center;gap:6px;}
+.symptom-pill.active{border-color:var(--mohfw-blue);background:var(--mohfw-light);color:var(--mohfw-blue);}
+.voice-btn{background:linear-gradient(135deg,var(--mohfw-blue),#3b82f6);color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%;justify-content:center;transition:all .2s;}
+.voice-btn.listening{background:linear-gradient(135deg,#dc2626,#ef4444);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 10px rgba(239,68,68,0)}}
+.bed-bar{height:8px;border-radius:4px;background:#e2e8f0;overflow:hidden;margin:4px 0;}
+.bed-fill{height:100%;border-radius:4px;transition:width .5s;}
+.bed-free{background:var(--mohfw-green);}
+.bed-low{background:var(--accent);}
+.bed-critical{background:#ef4444;}
+.doctor-card{border:2px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;transition:all .2s;cursor:pointer;}
+.doctor-card:hover{border-color:#93c5fd;box-shadow:0 2px 8px rgba(30,64,175,.1);}
+.doctor-card.selected-doc{border-color:var(--mohfw-green);background:#f0fdf4;box-shadow:0 2px 12px rgba(16,185,129,.2);}
+.slot-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;flex-shrink:0;}
+.best-match{background:linear-gradient(135deg,#eff6ff,#ecfdf5);border:2px solid var(--mohfw-blue);border-radius:16px;padding:16px;margin:12px;}
+.ai-badge{background:var(--mohfw-blue);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:.5px;}
+.book-btn{background:linear-gradient(135deg,var(--mohfw-green),#059669);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;box-shadow:0 4px 15px rgba(16,185,129,.3);}
+.book-btn:hover{transform:translateY(-1px);}
+.doc-book-btn{background:linear-gradient(135deg,var(--mohfw-blue),#3b82f6);color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.doc-book-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(30,64,175,.3);}
+.doc-book-btn.selected{background:linear-gradient(135deg,var(--mohfw-green),#059669);}
+.nav-tabs .nav-link{font-size:13px;font-weight:500;color:#64748b;}
+.nav-tabs .nav-link.active{color:var(--mohfw-blue);}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
+.lang-card{border:2px solid #e2e8f0;border-radius:10px;padding:10px;cursor:pointer;transition:all .2s;text-align:center;background:#fff;}
+.lang-card.selected{border-color:var(--mohfw-blue);background:var(--mohfw-light);}
+.lang-card:hover{border-color:#93c5fd;transform:translateY(-1px);}
+.lang-name{font-size:13px;font-weight:600;color:#1e293b;}
+.lang-native{font-size:15px;color:var(--mohfw-blue);}
+.modal-header{background:linear-gradient(135deg,var(--mohfw-dark),var(--mohfw-blue));color:#fff;}
+.toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;display:flex;z-index:99;box-shadow:0 -2px 12px rgba(0,0,0,.08);}
+.nav-item-btn{flex:1;border:none;background:none;padding:10px 4px 6px;font-size:10px;font-weight:500;color:#94a3b8;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .2s;}
+.nav-item-btn.active{color:var(--mohfw-blue);}
+.nav-icon{font-size:20px;}
+.content-wrap{padding-bottom:70px;}
 .mohfw-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:4px 8px;font-size:10px;font-weight:600;color:var(--mohfw-blue);}
-/* Slots timeline */
 .slot-dot{display:inline-block;width:28px;height:28px;border-radius:50%;font-size:9px;font-weight:600;text-align:center;line-height:28px;margin:2px;}
 .slot-free{background:#dcfce7;color:#166534;}
 .slot-booked{background:#fee2e2;color:#991b1b;}
-/* Search */
 .search-box{border:2px solid #e2e8f0;border-radius:12px;padding:10px 14px;width:100%;font-size:14px;outline:none;transition:border .2s;}
 .search-box:focus{border-color:var(--mohfw-blue);}
-/* QR */
 #qrCanvas{border-radius:12px;border:4px solid var(--mohfw-blue);}
+.selected-doc-banner{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:8px 12px;font-size:12px;color:#166534;margin-bottom:8px;display:none;}
 </style>
 </head>
 <body>
-
-<!-- APP HEADER -->
 <div class="app-header">
-  <div class="logo-row justify-content-between">
+  <div class="d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center gap-2">
       <div class="logo-badge">🏥 PHC-TRACE</div>
       <span style="font-size:11px;opacity:.8">v5.0</span>
-      <div class="mohfw-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--mohfw-blue)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        MoHFW
-      </div>
+      <div class="mohfw-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--mohfw-blue)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>MoHFW</div>
     </div>
-    <div class="d-flex align-items-center gap-2">
-      <span id="offlineStatus" style="font-size:11px;"><span class="status-dot dot-green"></span>Online🟢</span>
-    </div>
+    <span id="offlineStatus" style="font-size:11px;"><span class="status-dot dot-green"></span><span data-i18n="online">Online🟢</span></span>
   </div>
   <div class="d-flex gap-2 mt-2">
     <select id="citySelect" onchange="onCityChange()" class="form-select form-select-sm" style="font-size:12px;max-width:120px;border-radius:8px;">
@@ -135,69 +106,61 @@ body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8
   </div>
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <button class="nav-item-btn active" onclick="showTab('home',this)"><span class="nav-icon">🏠</span>Home</button>
-  <button class="nav-item-btn" onclick="showTab('hospitals',this)"><span class="nav-icon">🏥</span>Hospitals</button>
-  <button class="nav-item-btn" onclick="showTab('bookings',this)"><span class="nav-icon">📋</span>Bookings</button>
-  <button class="nav-item-btn" onclick="showTab('language',this)"><span class="nav-icon">🌐</span>Language</button>
-  <button class="nav-item-btn" onclick="showTab('settings',this)"><span class="nav-icon">⚙️</span>Settings</button>
+  <button class="nav-item-btn active" onclick="showTab('home',this)"><span class="nav-icon">🏠</span><span data-i18n="home">Home</span></button>
+  <button class="nav-item-btn" onclick="showTab('hospitals',this)"><span class="nav-icon">🏥</span><span data-i18n="hospitals">Hospitals</span></button>
+  <button class="nav-item-btn" onclick="showTab('bookings',this)"><span class="nav-icon">📋</span><span data-i18n="bookings">Bookings</span></button>
+  <button class="nav-item-btn" onclick="showTab('language',this)"><span class="nav-icon">🌐</span><span data-i18n="language">Language</span></button>
+  <button class="nav-item-btn" onclick="showTab('settings',this)"><span class="nav-icon">⚙️</span><span data-i18n="settings">Settings</span></button>
 </div>
 
-<!-- CONTENT -->
 <div class="content-wrap">
 
 <!-- HOME TAB -->
 <div id="tab-home">
-
-<!-- SYMPTOM SELECTOR -->
-<div class="card-section">
-  <div class="section-title">🎯 Select Symptom</div>
-  <div class="d-flex flex-wrap gap-2" id="symptomPills">
-    <button class="symptom-pill active" onclick="selectSymptom('fever',this)">🌡️ Fever<span class="devanagari" style="font-size:11px;opacity:.7"> बुखार</span></button>
-    <button class="symptom-pill" onclick="selectSymptom('accident',this)">🚨 Accident<span class="devanagari" style="font-size:11px;opacity:.7"> दुर्घटना</span></button>
-    <button class="symptom-pill" onclick="selectSymptom('general',this)">💊 General<span class="devanagari" style="font-size:11px;opacity:.7"> सामान्य</span></button>
-    <button class="symptom-pill" onclick="selectSymptom('pregnancy',this)">🤰 Pregnancy<span class="devanagari" style="font-size:11px;opacity:.7"> गर्भावस्था</span></button>
+  <div class="card-section">
+    <div class="section-title" data-i18n="selectSymptom">🎯 Select Symptom</div>
+    <div class="d-flex flex-wrap gap-2" id="symptomPills">
+      <button class="symptom-pill active" onclick="selectSymptom('fever',this)">🌡️ <span data-i18n="fever">Fever</span></button>
+      <button class="symptom-pill" onclick="selectSymptom('accident',this)">🚨 <span data-i18n="accident">Accident</span></button>
+      <button class="symptom-pill" onclick="selectSymptom('general',this)">💊 <span data-i18n="general">General</span></button>
+      <button class="symptom-pill" onclick="selectSymptom('pregnancy',this)">🤰 <span data-i18n="pregnancy">Pregnancy</span></button>
+    </div>
+    <button class="voice-btn mt-3" id="voiceBtn" onclick="toggleVoice()">
+      🎤 <span id="voiceBtnText" data-i18n="speakVoice">हिंदी में बोलें</span>
+    </button>
+    <div id="voiceResult" style="min-height:28px;padding:6px 0;font-size:13px;color:var(--mohfw-blue);font-style:italic;display:none;"></div>
   </div>
-  <!-- Voice -->
-  <button class="voice-btn mt-3" id="voiceBtn" onclick="toggleVoice()">
-    🎤 <span id="voiceBtnText" class="devanagari">हिंदी में बोलें</span>
-  </button>
-  <div id="voiceResult" style="min-height:28px;padding:6px 0;font-size:13px;color:var(--mohfw-blue);font-style:italic;display:none;"></div>
-</div>
 
-<!-- LIVE STATUS -->
-<div class="card-section" id="liveStatus">
-  <div class="d-flex justify-content-between align-items-center mb-2">
-    <div class="section-title mb-0">📊 LIVE BED STATUS</div>
-    <span id="distanceTag" style="font-size:12px;color:var(--mohfw-green);font-weight:600;"></span>
+  <div class="card-section" id="liveStatus">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="section-title mb-0" data-i18n="liveBeds">📊 LIVE BED STATUS</div>
+      <span id="distanceTag" style="font-size:12px;color:var(--mohfw-green);font-weight:600;"></span>
+    </div>
+    <div id="bedDisplay"></div>
   </div>
-  <div id="bedDisplay"></div>
-</div>
 
-<!-- DOCTORS -->
-<div class="card-section">
-  <div class="section-title">👨‍⚕️ AVAILABLE DOCTORS</div>
-  <div id="doctorDisplay"></div>
-</div>
-
-<!-- BEST MATCH -->
-<div class="best-match" id="bestMatch">
-  <div class="d-flex align-items-center gap-2 mb-2">
-    <span class="ai-badge">✨ AI BEST MATCH</span>
-    <span style="font-size:11px;color:#64748b;">XGBoost scored</span>
+  <div class="card-section">
+    <div class="section-title" data-i18n="availableDoctors">👨‍⚕️ AVAILABLE DOCTORS</div>
+    <div id="selectedDocBanner" class="selected-doc-banner"></div>
+    <div id="doctorDisplay"></div>
   </div>
-  <div id="bestMatchContent"></div>
-  <button class="book-btn mt-3" onclick="openBooking()">🎯 BOOK NOW — ₹150 Package</button>
-</div>
 
-</div><!-- /home tab -->
+  <div class="best-match" id="bestMatch">
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <span class="ai-badge">✨ <span data-i18n="aiBestMatch">AI BEST MATCH</span></span>
+      <span style="font-size:11px;color:#64748b;">XGBoost scored</span>
+    </div>
+    <div id="bestMatchContent"></div>
+    <button class="book-btn mt-3" onclick="openBooking()">🎯 <span data-i18n="bookNow">BOOK NOW</span> — ₹150 Package</button>
+  </div>
+</div>
 
 <!-- HOSPITALS TAB -->
 <div id="tab-hospitals" style="display:none;">
   <div class="card-section">
-    <div class="section-title">🏥 All Hospitals</div>
-    <input class="search-box mb-3" placeholder="Search hospital or city..." oninput="filterHospitals(this.value)">
+    <div class="section-title" data-i18n="allHospitals">🏥 All Hospitals</div>
+    <input class="search-box mb-3" data-i18n-placeholder="searchHospital" placeholder="Search hospital or city..." oninput="filterHospitals(this.value)">
     <div id="hospitalList"></div>
   </div>
 </div>
@@ -205,34 +168,33 @@ body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8
 <!-- BOOKINGS TAB -->
 <div id="tab-bookings" style="display:none;">
   <div class="card-section">
-    <div class="section-title">📋 My Bookings</div>
-    <div id="bookingsList"><p style="color:#94a3b8;font-size:13px;text-align:center;padding:20px;">No bookings yet. Book your first appointment!</p></div>
+    <div class="section-title" data-i18n="myBookings">📋 My Bookings</div>
+    <div id="bookingsList"><p style="color:#94a3b8;font-size:13px;text-align:center;padding:20px;" data-i18n="noBookings">No bookings yet. Book your first appointment!</p></div>
   </div>
 </div>
 
 <!-- LANGUAGE TAB -->
 <div id="tab-language" style="display:none;">
   <div class="card-section">
-    <div class="section-title">🌐 Language Preferences</div>
-    <p style="font-size:12px;color:#64748b;margin-bottom:12px;">Select your preferred language for the app interface. All 22 Scheduled Languages of India + English are supported.</p>
+    <div class="section-title">🌐 <span data-i18n="languagePrefs">Language Preferences</span></div>
+    <p style="font-size:12px;color:#64748b;margin-bottom:12px;" data-i18n="langSubtitle">Tap any language to apply instantly. All 22 Scheduled Languages of India + English.</p>
     <input class="search-box mb-3" id="langSearch" placeholder="Search language..." oninput="filterLangs(this.value)">
     <div class="lang-grid" id="langGrid"></div>
-    <button class="book-btn mt-3" onclick="applyLanguage()">✅ Apply Language</button>
   </div>
 </div>
 
 <!-- SETTINGS TAB -->
 <div id="tab-settings" style="display:none;">
   <div class="card-section">
-    <div class="section-title">⚙️ Settings</div>
+    <div class="section-title" data-i18n="settings">⚙️ Settings</div>
     <div class="py-2 border-bottom">
       <div class="d-flex justify-content-between align-items-center">
-        <span style="font-size:14px;">📍 GPS Location</span>
+        <span style="font-size:14px;">📍 <span data-i18n="gpsLocation">GPS Location</span></span>
         <button class="btn btn-sm" id="gpsBtn" style="background:var(--mohfw-blue);color:#fff;border-radius:8px;font-size:12px;" onclick="getGPS()">📡 Detect</button>
       </div>
       <div id="gpsStatus" style="font-size:12px;color:#94a3b8;margin-top:4px;">Not yet detected</div>
       <div id="gpsDenied" style="display:none;margin-top:8px;">
-        <p style="font-size:12px;color:#ef4444;margin-bottom:6px;">⚠️ Location access denied. Enter manually:</p>
+        <p style="font-size:12px;color:#ef4444;margin-bottom:6px;">⚠️ Permission denied. Enter manually:</p>
         <div class="d-flex gap-2">
           <input id="latInput" class="search-box" placeholder="Latitude e.g. 22.7196" style="font-size:12px;padding:6px 10px;">
           <input id="lonInput" class="search-box" placeholder="Longitude e.g. 75.8577" style="font-size:12px;padding:6px 10px;">
@@ -241,34 +203,30 @@ body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8
       </div>
     </div>
     <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-      <span style="font-size:14px;">🔔 Push Notifications</span>
-      <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="pushToggle" checked></div>
+      <span style="font-size:14px;">🔔 <span data-i18n="pushNotif">Push Notifications</span></span>
+      <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" checked></div>
     </div>
     <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-      <span style="font-size:14px;">📴 Offline Mode</span>
-      <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="offlineToggle" checked></div>
+      <span style="font-size:14px;">📴 <span data-i18n="offlineMode">Offline Mode</span></span>
+      <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" checked></div>
     </div>
     <div class="d-flex justify-content-between align-items-center py-2">
-      <span style="font-size:14px;">🌙 Dark Mode</span>
+      <span style="font-size:14px;">🌙 <span data-i18n="darkMode">Dark Mode</span></span>
       <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="darkToggle" onchange="toggleDark(this.checked)"></div>
     </div>
     <div class="mt-3 p-3" style="background:#f0f9ff;border-radius:12px;font-size:12px;color:#64748b;">
-      <b>PHC-TRACE v5.0</b><br>
-      ABDM Sandbox Ready • MP CMHO Pilot Q2 2026<br>
-      Impact: 5000+ patients/day • 69% wastage reduced<br>
-      <span style="color:var(--mohfw-green);">© 2026 MoHFW India</span>
+      <b>PHC-TRACE v5.0</b><br>ABDM Sandbox Ready • MP CMHO Pilot Q2 2026<br>Impact: 5000+ patients/day • 69% wastage reduced<br><span style="color:var(--mohfw-green);">© 2026 MoHFW India</span>
     </div>
   </div>
 </div>
-
-</div><!-- /content-wrap -->
+</div>
 
 <!-- BOOKING MODAL -->
 <div class="modal fade" id="bookingModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border-radius:20px;overflow:hidden;">
       <div class="modal-header">
-        <h5 class="modal-title">🎯 Confirm Booking</h5>
+        <h5 class="modal-title">🎯 <span data-i18n="confirmBooking">Confirm Booking</span></h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
@@ -278,7 +236,7 @@ body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8
           <p style="font-size:11px;color:#64748b;margin-top:6px;">Scan to pay ₹150 via UPI</p>
         </div>
         <div class="d-flex gap-2">
-          <button class="btn btn-sm flex-1" style="background:var(--mohfw-blue);color:#fff;border-radius:10px;font-size:13px;" onclick="confirmBooking()">✅ Confirm & Pay</button>
+          <button class="btn btn-sm flex-1" style="background:var(--mohfw-blue);color:#fff;border-radius:10px;font-size:13px;" onclick="confirmBooking()">✅ <span data-i18n="confirmPay">Confirm & Pay</span></button>
           <button class="btn btn-sm flex-1" style="background:#e2e8f0;color:#1e293b;border-radius:10px;font-size:13px;" onclick="sendSMS()">📱 SMS Token</button>
         </div>
         <a id="mapsLink" href="#" target="_blank" class="btn btn-sm w-100 mt-2" style="background:#10b981;color:#fff;border-radius:10px;font-size:13px;">🗺️ Open in Google Maps</a>
@@ -287,46 +245,69 @@ body.dark [style*="background:#e2e8f0"]{background:#334155!important;color:#e2e8
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast-container"><div id="toastEl" class="toast align-items-center text-white border-0" style="background:var(--mohfw-blue);border-radius:12px;" role="alert"><div class="d-flex"><div class="toast-body" id="toastMsg"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+// ===================== TRANSLATIONS =====================
+const T = {
+  hi:{home:"होम",hospitals:"अस्पताल",bookings:"बुकिंग",language:"भाषा",settings:"सेटिंग",selectSymptom:"🎯 लक्षण चुनें",fever:"बुखार",accident:"दुर्घटना",general:"सामान्य",pregnancy:"गर्भावस्था",speakVoice:"हिंदी में बोलें",liveBeds:"📊 बेड की स्थिति",availableDoctors:"👨‍⚕️ उपलब्ध डॉक्टर",aiBestMatch:"AI सर्वश्रेष्ठ",bookNow:"अभी बुक करें",allHospitals:"🏥 सभी अस्पताल",myBookings:"📋 मेरी बुकिंग",noBookings:"अभी तक कोई बुकिंग नहीं।",languagePrefs:"भाषा प्राथमिकता",langSubtitle:"भाषा पर क्लिक करें — तुरंत बदल जाएगी।",confirmBooking:"बुकिंग की पुष्टि",confirmPay:"पुष्टि करें & भुगतान",bookDoctor:"डॉक्टर बुक करें",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS स्थान",pushNotif:"सूचनाएं",offlineMode:"ऑफलाइन मोड",searchHospital:"अस्पताल खोजें...",selectDoc:"✅ चयनित"},
+  en:{home:"Home",hospitals:"Hospitals",bookings:"Bookings",language:"Language",settings:"Settings",selectSymptom:"🎯 Select Symptom",fever:"Fever",accident:"Accident",general:"General",pregnancy:"Pregnancy",speakVoice:"Speak in English",liveBeds:"📊 LIVE BED STATUS",availableDoctors:"👨‍⚕️ AVAILABLE DOCTORS",aiBestMatch:"AI BEST MATCH",bookNow:"BOOK NOW",allHospitals:"🏥 All Hospitals",myBookings:"📋 My Bookings",noBookings:"No bookings yet. Book your first appointment!",languagePrefs:"Language Preferences",langSubtitle:"Tap any language to apply instantly.",confirmBooking:"Confirm Booking",confirmPay:"Confirm & Pay",bookDoctor:"Book Doctor",online:"Online🟢",darkMode:"Dark Mode",gpsLocation:"GPS Location",pushNotif:"Push Notifications",offlineMode:"Offline Mode",searchHospital:"Search hospital or city...",selectDoc:"✅ Selected"},
+  bn:{home:"হোম",hospitals:"হাসপাতাল",bookings:"বুকিং",language:"ভাষা",settings:"সেটিং",selectSymptom:"🎯 উপসর্গ বেছে নিন",fever:"জ্বর",accident:"দুর্ঘটনা",general:"সাধারণ",pregnancy:"গর্ভাবস্থা",speakVoice:"বাংলায় বলুন",liveBeds:"📊 বেড স্ট্যাটাস",availableDoctors:"👨‍⚕️ উপলব্ধ ডাক্তার",aiBestMatch:"AI সেরা ম্যাচ",bookNow:"এখনই বুক করুন",allHospitals:"🏥 সব হাসপাতাল",myBookings:"📋 আমার বুকিং",noBookings:"এখনও কোনো বুকিং নেই।",languagePrefs:"ভাষা পছন্দ",langSubtitle:"যেকোনো ভাষায় ক্লিক করুন — তৎক্ষণাৎ পরিবর্তন হবে।",confirmBooking:"বুকিং নিশ্চিত করুন",confirmPay:"নিশ্চিত ও পেমেন্ট",bookDoctor:"ডাক্তার বুক করুন",online:"অনলাইন🟢",darkMode:"ডার্ক মোড",gpsLocation:"GPS অবস্থান",pushNotif:"নোটিফিকেশন",offlineMode:"অফলাইন মোড",searchHospital:"হাসপাতাল খুঁজুন...",selectDoc:"✅ নির্বাচিত"},
+  te:{home:"హోమ్",hospitals:"ఆసుపత్రులు",bookings:"బుకింగ్‌లు",language:"భాష",settings:"సెట్టింగ్‌లు",selectSymptom:"🎯 లక్షణం ఎంచుకోండి",fever:"జ్వరం",accident:"ప్రమాదం",general:"సాధారణం",pregnancy:"గర్భం",speakVoice:"తెలుగులో మాట్లాడండి",liveBeds:"📊 బెడ్ స్థితి",availableDoctors:"👨‍⚕️ అందుబాటులో వైద్యులు",aiBestMatch:"AI ఉత్తమ సరిపోలిక",bookNow:"ఇప్పుడు బుక్ చేయండి",allHospitals:"🏥 అన్ని ఆసుపత్రులు",myBookings:"📋 నా బుకింగ్‌లు",noBookings:"బుకింగ్‌లు లేవు.",languagePrefs:"భాషా ప్రాధాన్యతలు",langSubtitle:"భాషపై నొక్కండి — వెంటనే మారుతుంది.",confirmBooking:"బుకింగ్ నిర్ధారించండి",confirmPay:"నిర్ధారించు & చెల్లించు",bookDoctor:"వైద్యుని బుక్ చేయండి",online:"ఆన్‌లైన్🟢",darkMode:"డార్క్ మోడ్",gpsLocation:"GPS స్థానం",pushNotif:"నోటిఫికేషన్లు",offlineMode:"ఆఫ్‌లైన్ మోడ్",searchHospital:"ఆసుపత్రి శోధించండి...",selectDoc:"✅ ఎంచుకున్నారు"},
+  mr:{home:"होम",hospitals:"रुग्णालये",bookings:"बुकिंग",language:"भाषा",settings:"सेटिंग्ज",selectSymptom:"🎯 लक्षण निवडा",fever:"ताप",accident:"अपघात",general:"सामान्य",pregnancy:"गर्भधारणा",speakVoice:"मराठीत बोला",liveBeds:"📊 बेड स्थिती",availableDoctors:"👨‍⚕️ उपलब्ध डॉक्टर",aiBestMatch:"AI सर्वोत्तम जुळणी",bookNow:"आत्ता बुक करा",allHospitals:"🏥 सर्व रुग्णालये",myBookings:"📋 माझी बुकिंग",noBookings:"अद्याप बुकिंग नाही.",languagePrefs:"भाषा प्राधान्ये",langSubtitle:"भाषेवर क्लिक करा — तात्काळ बदलेल.",confirmBooking:"बुकिंगची पुष्टी",confirmPay:"पुष्टी करा & पैसे द्या",bookDoctor:"डॉक्टर बुक करा",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS स्थान",pushNotif:"सूचना",offlineMode:"ऑफलाइन मोड",searchHospital:"रुग्णालय शोधा...",selectDoc:"✅ निवडले"},
+  ta:{home:"முகப்பு",hospitals:"மருத்துவமனைகள்",bookings:"முன்பதிவுகள்",language:"மொழி",settings:"அமைப்புகள்",selectSymptom:"🎯 அறிகுறி தேர்வு",fever:"காய்ச்சல்",accident:"விபத்து",general:"பொது",pregnancy:"கர்ப்பம்",speakVoice:"தமிழில் பேசுங்கள்",liveBeds:"📊 படுக்கை நிலை",availableDoctors:"👨‍⚕️ கிடைக்கும் மருத்துவர்கள்",aiBestMatch:"AI சிறந்த பொருத்தம்",bookNow:"இப்போது முன்பதிவு",allHospitals:"🏥 அனைத்து மருத்துவமனைகள்",myBookings:"📋 என் முன்பதிவுகள்",noBookings:"முன்பதிவுகள் இல்லை.",languagePrefs:"மொழி விருப்பங்கள்",langSubtitle:"மொழியை தட்டுங்கள் — உடனே மாறும்.",confirmBooking:"முன்பதிவு உறுதி",confirmPay:"உறுதிப்படுத்து & செலுத்து",bookDoctor:"மருத்துவர் முன்பதிவு",online:"ஆன்லைன்🟢",darkMode:"இருண்ட பயன்முறை",gpsLocation:"GPS இடம்",pushNotif:"அறிவிப்புகள்",offlineMode:"ஆஃப்லைன் பயன்முறை",searchHospital:"மருத்துவமனை தேடு...",selectDoc:"✅ தேர்ந்தெடுக்கப்பட்டது"},
+  gu:{home:"હોમ",hospitals:"હૉસ્પિટલ",bookings:"બુકિંગ",language:"ભાષા",settings:"સેટિંગ",selectSymptom:"🎯 લક્ષણ પસંદ કરો",fever:"તાવ",accident:"અકસ્માત",general:"સામાન્ય",pregnancy:"ગર્ભાવસ્થા",speakVoice:"ગુજરાતીમાં બોલો",liveBeds:"📊 બેડ સ્થિતિ",availableDoctors:"👨‍⚕️ ઉપલબ્ધ ડૉક્ટર",aiBestMatch:"AI શ્રેષ્ઠ",bookNow:"હવે બુક કરો",allHospitals:"🏥 બધી હૉસ્પિટલ",myBookings:"📋 મારી બુકિંગ",noBookings:"હજી કોઈ બુકિંગ નથી.",languagePrefs:"ભાષા પ્રાધાન્ય",langSubtitle:"ભાષા પર ક્લિક કરો — તરત બદલાશે.",confirmBooking:"બુકિંગ પુષ્ટિ",confirmPay:"પુષ્ટિ & ચુકવણી",bookDoctor:"ડૉક્ટર બુક કરો",online:"ઓનલાઇન🟢",darkMode:"ડાર્ક મોડ",gpsLocation:"GPS સ્થાન",pushNotif:"સૂચનાઓ",offlineMode:"ઑફ્લાઇન મોડ",searchHospital:"હૉસ્પિટલ શોધો...",selectDoc:"✅ પસંદ"},
+  kn:{home:"ಹೋಮ್",hospitals:"ಆಸ್ಪತ್ರೆಗಳು",bookings:"ಬುಕಿಂಗ್‌ಗಳು",language:"ಭಾಷೆ",settings:"ಸೆಟ್ಟಿಂಗ್‌ಗಳು",selectSymptom:"🎯 ಲಕ್ಷಣ ಆಯ್ಕೆ",fever:"ಜ್ವರ",accident:"ಅಪಘಾತ",general:"ಸಾಮಾನ್ಯ",pregnancy:"ಗರ್ಭಧಾರಣೆ",speakVoice:"ಕನ್ನಡದಲ್ಲಿ ಮಾತನಾಡಿ",liveBeds:"📊 ಬೆಡ್ ಸ್ಥಿತಿ",availableDoctors:"👨‍⚕️ ಲಭ್ಯ ವೈದ್ಯರು",aiBestMatch:"AI ಅತ್ಯುತ್ತಮ",bookNow:"ಈಗ ಬುಕ್ ಮಾಡಿ",allHospitals:"🏥 ಎಲ್ಲಾ ಆಸ್ಪತ್ರೆಗಳು",myBookings:"📋 ನನ್ನ ಬುಕಿಂಗ್‌ಗಳು",noBookings:"ಇನ್ನೂ ಬುಕಿಂಗ್ ಇಲ್ಲ.",languagePrefs:"ಭಾಷಾ ಆದ್ಯತೆಗಳು",langSubtitle:"ಭಾಷೆ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ — ತಕ್ಷಣ ಬದಲಾಗುತ್ತದೆ.",confirmBooking:"ಬುಕಿಂಗ್ ದೃಢೀಕರಣ",confirmPay:"ದೃಢೀಕರಿಸು & ಪಾವತಿ",bookDoctor:"ವೈದ್ಯರ ಬುಕಿಂಗ್",online:"ಆನ್‌ಲೈನ್🟢",darkMode:"ಡಾರ್ಕ್ ಮೋಡ್",gpsLocation:"GPS ಸ್ಥಳ",pushNotif:"ಅಧಿಸೂಚನೆಗಳು",offlineMode:"ಆಫ್‌ಲೈನ್ ಮೋಡ್",searchHospital:"ಆಸ್ಪತ್ರೆ ಹುಡುಕಿ...",selectDoc:"✅ ಆಯ್ಕೆಯಾಗಿದೆ"},
+  ml:{home:"ഹോം",hospitals:"ആശുപത്രികൾ",bookings:"ബുക്കിംഗുകൾ",language:"ഭാഷ",settings:"ക്രമീകരണങ്ങൾ",selectSymptom:"🎯 ലക്ഷണം തിരഞ്ഞെടുക്കൂ",fever:"പനി",accident:"അപകടം",general:"പൊതുവ്",pregnancy:"ഗർഭം",speakVoice:"മലയാളത്തിൽ സംസാരിക്കൂ",liveBeds:"📊 ബെഡ് നില",availableDoctors:"👨‍⚕️ ലഭ്യമായ ഡോക്ടർമാർ",aiBestMatch:"AI മികച്ച ഫലം",bookNow:"ഇപ്പോൾ ബുക്ക് ചെയ്യൂ",allHospitals:"🏥 എല്ലാ ആശുപത്രികൾ",myBookings:"📋 എന്റെ ബുക്കിംഗുകൾ",noBookings:"ഇതുവരെ ബുക്കിംഗ് ഇല്ല.",languagePrefs:"ഭാഷാ മുൻഗണനകൾ",langSubtitle:"ഭാഷ ടാപ്പ് ചെയ്യൂ — ഉടൻ മാറും.",confirmBooking:"ബുക്കിംഗ് സ്ഥിരീകരണം",confirmPay:"സ്ഥിരീകരിക്കൂ & പണം നൽകൂ",bookDoctor:"ഡോക്ടറെ ബുക്ക് ചെയ്യൂ",online:"ഓൺലൈൻ🟢",darkMode:"ഡാർക്ക് മോഡ്",gpsLocation:"GPS സ്ഥലം",pushNotif:"അറിയിപ്പുകൾ",offlineMode:"ഓഫ്‌ലൈൻ മോഡ്",searchHospital:"ആശുപത്രി തിരയൂ...",selectDoc:"✅ തിരഞ്ഞെടുത്തു"},
+  pa:{home:"ਹੋਮ",hospitals:"ਹਸਪਤਾਲ",bookings:"ਬੁਕਿੰਗ",language:"ਭਾਸ਼ਾ",settings:"ਸੈਟਿੰਗਜ਼",selectSymptom:"🎯 ਲੱਛਣ ਚੁਣੋ",fever:"ਬੁਖ਼ਾਰ",accident:"ਦੁਰਘਟਨਾ",general:"ਆਮ",pregnancy:"ਗਰਭ",speakVoice:"ਪੰਜਾਬੀ ਵਿੱਚ ਬੋਲੋ",liveBeds:"📊 ਬੈੱਡ ਸਥਿਤੀ",availableDoctors:"👨‍⚕️ ਉਪਲਬਧ ਡਾਕਟਰ",aiBestMatch:"AI ਸਭ ਤੋਂ ਵਧੀਆ",bookNow:"ਹੁਣੇ ਬੁੱਕ ਕਰੋ",allHospitals:"🏥 ਸਾਰੇ ਹਸਪਤਾਲ",myBookings:"📋 ਮੇਰੀ ਬੁਕਿੰਗ",noBookings:"ਅਜੇ ਕੋਈ ਬੁਕਿੰਗ ਨਹੀਂ।",languagePrefs:"ਭਾਸ਼ਾ ਤਰਜੀਹਾਂ",langSubtitle:"ਭਾਸ਼ਾ 'ਤੇ ਕਲਿੱਕ ਕਰੋ — ਤੁਰੰਤ ਬਦਲੇਗਾ।",confirmBooking:"ਬੁਕਿੰਗ ਪੁਸ਼ਟੀ",confirmPay:"ਪੁਸ਼ਟੀ ਕਰੋ & ਭੁਗਤਾਨ",bookDoctor:"ਡਾਕਟਰ ਬੁੱਕ ਕਰੋ",online:"ਔਨਲਾਈਨ🟢",darkMode:"ਡਾਰਕ ਮੋਡ",gpsLocation:"GPS ਸਥਾਨ",pushNotif:"ਸੂਚਨਾਵਾਂ",offlineMode:"ਔਫਲਾਈਨ ਮੋਡ",searchHospital:"ਹਸਪਤਾਲ ਖੋਜੋ...",selectDoc:"✅ ਚੁਣਿਆ"},
+  ur:{home:"ہوم",hospitals:"ہسپتال",bookings:"بکنگ",language:"زبان",settings:"ترتیبات",selectSymptom:"🎯 علامت منتخب کریں",fever:"بخار",accident:"حادثہ",general:"عام",pregnancy:"حمل",speakVoice:"اردو میں بولیں",liveBeds:"📊 بستر کی صورتحال",availableDoctors:"👨‍⚕️ دستیاب ڈاکٹر",aiBestMatch:"AI بہترین میچ",bookNow:"ابھی بک کریں",allHospitals:"🏥 تمام ہسپتال",myBookings:"📋 میری بکنگ",noBookings:"ابھی تک کوئی بکنگ نہیں۔",languagePrefs:"زبان کی ترجیحات",langSubtitle:"کسی بھی زبان پر کلک کریں — فوری بدل جائے گا۔",confirmBooking:"بکنگ کی تصدیق",confirmPay:"تصدیق کریں اور ادائیگی",bookDoctor:"ڈاکٹر بک کریں",online:"آن لائن🟢",darkMode:"ڈارک موڈ",gpsLocation:"GPS مقام",pushNotif:"اطلاعات",offlineMode:"آف لائن موڈ",searchHospital:"ہسپتال تلاش کریں...",selectDoc:"✅ منتخب"},
+  or:{home:"ହୋମ",hospitals:"ଡାକ୍ତାରଖାନା",bookings:"ବୁକିଂ",language:"ଭାଷା",settings:"ସେଟିଂ",selectSymptom:"🎯 ଲକ୍ଷଣ ବାଛ",fever:"ଜ୍ୱର",accident:"ଦୁର୍ଘଟଣା",general:"ସାଧାରଣ",pregnancy:"ଗର୍ଭ",speakVoice:"ଓଡ଼ିଆରେ କୁହ",liveBeds:"📊 ବେଡ ସ୍ଥିତି",availableDoctors:"👨‍⚕️ ଉପଲବ୍ଧ ଡାକ୍ତର",aiBestMatch:"AI ସର୍ବୋତ୍ତମ",bookNow:"ବର୍ତ୍ତମାନ ବୁକ",allHospitals:"🏥 ସମସ୍ତ ଡାକ୍ତାରଖାନା",myBookings:"📋 ମୋ ବୁକିଂ",noBookings:"ଏ ପର୍ଯ୍ୟନ୍ତ ବୁକିଂ ନାହିଁ।",languagePrefs:"ଭାଷା ଅଗ୍ରାଧିକାର",langSubtitle:"ଭାଷାରେ କ୍ଲିକ୍ କରନ୍ତୁ — ତୁରନ୍ତ ବଦଳିବ।",confirmBooking:"ବୁକିଂ ନିଶ୍ଚିତ",confirmPay:"ନିଶ୍ଚିତ ଓ ଦେୟ",bookDoctor:"ଡାକ୍ତର ବୁକ",online:"ଅନ୍‌ଲାଇନ୍🟢",darkMode:"ଡାର୍କ ମୋଡ",gpsLocation:"GPS ସ୍ଥାନ",pushNotif:"ବିଜ୍ଞପ୍ତି",offlineMode:"ଅଫ୍‌ଲାଇନ ମୋଡ",searchHospital:"ଡାକ୍ତାରଖାନା ଖୋଜ...",selectDoc:"✅ ଚୁଣାଯାଇଛି"},
+  as:{home:"হোম",hospitals:"চিকিৎসালয়",bookings:"বুকিং",language:"ভাষা",settings:"ছেটিং",selectSymptom:"🎯 লক্ষণ বাছক",fever:"জ্বৰ",accident:"দুৰ্ঘটনা",general:"সাধাৰণ",pregnancy:"গৰ্ভাৱস্থা",speakVoice:"অসমীয়াত কওক",liveBeds:"📊 বেড অৱস্থা",availableDoctors:"👨‍⚕️ উপলব্ধ চিকিৎসক",aiBestMatch:"AI সৰ্বোত্তম",bookNow:"এতিয়াই বুক কৰক",allHospitals:"🏥 সকলো চিকিৎসালয়",myBookings:"📋 মোৰ বুকিং",noBookings:"এতিয়ালৈ বুকিং নাই।",languagePrefs:"ভাষা পছন্দ",langSubtitle:"ভাষাত ক্লিক কৰক — তৎক্ষণাত সলনি হ'ব।",confirmBooking:"বুকিং নিশ্চিত",confirmPay:"নিশ্চিত আৰু পেমেণ্ট",bookDoctor:"চিকিৎসক বুক কৰক",online:"অনলাইন🟢",darkMode:"ডাৰ্ক মোড",gpsLocation:"GPS স্থান",pushNotif:"জাননী",offlineMode:"অফলাইন মোড",searchHospital:"চিকিৎসালয় বিচাৰক...",selectDoc:"✅ বাছনি কৰা হৈছে"},
+  mai:{home:"होम",hospitals:"अस्पताल",bookings:"बुकिंग",language:"भाषा",settings:"सेटिंग",selectSymptom:"🎯 लक्षण चुनू",fever:"बोखार",accident:"दुर्घटना",general:"सामान्य",pregnancy:"गर्भावस्था",speakVoice:"मैथिलीमे बाजू",liveBeds:"📊 बेड स्थिति",availableDoctors:"👨‍⚕️ उपलब्ध डॉक्टर",aiBestMatch:"AI सर्वश्रेष्ठ",bookNow:"अखन बुक करू",allHospitals:"🏥 सभ अस्पताल",myBookings:"📋 हमर बुकिंग",noBookings:"अखन धरि कोनो बुकिंग नहि।",languagePrefs:"भाषा प्राथमिकता",langSubtitle:"भाषापर क्लिक करू — तुरंत बदलत।",confirmBooking:"बुकिंग पुष्टि",confirmPay:"पुष्टि करू & भुगतान",bookDoctor:"डॉक्टर बुक करू",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS स्थान",pushNotif:"सूचना",offlineMode:"ऑफलाइन मोड",searchHospital:"अस्पताल खोजू...",selectDoc:"✅ चयनित"},
+  sa:{home:"गृहम्",hospitals:"चिकित्सालयम्",bookings:"आरक्षणम्",language:"भाषा",settings:"सेटिंग",selectSymptom:"🎯 लक्षणं चिनोतु",fever:"ज्वरः",accident:"दुर्घटना",general:"सामान्यम्",pregnancy:"गर्भावस्था",speakVoice:"संस्कृतेन वदतु",liveBeds:"📊 शय्या स्थितिः",availableDoctors:"👨‍⚕️ उपलब्धाः वैद्याः",aiBestMatch:"AI उत्तमम्",bookNow:"अधुना आरक्षयतु",allHospitals:"🏥 सर्वाणि चिकित्सालयानि",myBookings:"📋 मम आरक्षणम्",noBookings:"अद्यापि आरक्षणं नास्ति।",languagePrefs:"भाषा प्राथमिकता",langSubtitle:"भाषायां क्लिक करोतु — तत्क्षणं परिवर्तते।",confirmBooking:"आरक्षण पुष्टिः",confirmPay:"पुष्टिः & भुगतानम्",bookDoctor:"वैद्यम् आरक्षयतु",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS स्थानम्",pushNotif:"सूचना",offlineMode:"ऑफलाइन मोड",searchHospital:"चिकित्सालयं अन्वेषयतु...",selectDoc:"✅ चितम्"},
+  kok:{home:"होम",hospitals:"दवाखानो",bookings:"बुकिंग",language:"भास",settings:"सेटिंग",selectSymptom:"🎯 लक्षण निवड",fever:"ताप",accident:"अपघात",general:"सामान्य",pregnancy:"गर्भावस्था",speakVoice:"कोंकणींत उलय",liveBeds:"📊 बेड स्थिती",availableDoctors:"👨‍⚕️ उपलब्ध डॉक्टर",aiBestMatch:"AI बेस्ट",bookNow:"आतां बुक कर",allHospitals:"🏥 सगळे दवाखाने",myBookings:"📋 माझी बुकिंग",noBookings:"अजून बुकिंग ना.",languagePrefs:"भास प्राधान्य",langSubtitle:"भासेर क्लिक कर — लगेच बदलतलें.",confirmBooking:"बुकिंग पुष्टी",confirmPay:"पुष्टी कर & भुगतान",bookDoctor:"डॉक्टर बुक कर",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS जागो",pushNotif:"सूचना",offlineMode:"ऑफलाइन",searchHospital:"दवाखानो सोद...",selectDoc:"✅ निवडलां"},
+  sd:{home:"هوم",hospitals:"اسپتال",bookings:"بکنگ",language:"ٻولي",settings:"سيٽنگ",selectSymptom:"🎯 علامت چونڊيو",fever:"بخار",accident:"حادثو",general:"عام",pregnancy:"حمل",speakVoice:"سنڌيءَ ۾ ڳالهايو",liveBeds:"📊 بيڊ جي حالت",availableDoctors:"👨‍⚕️ موجود ڊاڪٽر",aiBestMatch:"AI بهترين",bookNow:"هاڻي بک ڪريو",allHospitals:"🏥 سڀ اسپتال",myBookings:"📋 منهنجي بکنگ",noBookings:"اڃا تائين ڪا بکنگ ناهي.",languagePrefs:"ٻولي ترجيح",langSubtitle:"ڪنهن به ٻولي تي ڪلڪ ڪريو — فوري بدلجندو.",confirmBooking:"بکنگ جي تصديق",confirmPay:"تصديق ڪريو & ادائيگي",bookDoctor:"ڊاڪٽر بک ڪريو",online:"آن لائن🟢",darkMode:"ڊارڪ موڊ",gpsLocation:"GPS مقام",pushNotif:"اطلاع",offlineMode:"آف لائن موڊ",searchHospital:"اسپتال ڳوليو...",selectDoc:"✅ چونڊيو"},
+  ne:{home:"होम",hospitals:"अस्पताल",bookings:"बुकिङ",language:"भाषा",settings:"सेटिङ",selectSymptom:"🎯 लक्षण छान्नुहोस्",fever:"ज्वरो",accident:"दुर्घटना",general:"सामान्य",pregnancy:"गर्भावस्था",speakVoice:"नेपालीमा बोल्नुहोस्",liveBeds:"📊 बेड स्थिति",availableDoctors:"👨‍⚕️ उपलब्ध डाक्टर",aiBestMatch:"AI सर्वोत्तम",bookNow:"अहिले बुक गर्नुहोस्",allHospitals:"🏥 सबै अस्पताल",myBookings:"📋 मेरो बुकिङ",noBookings:"अहिलेसम्म कुनै बुकिङ छैन।",languagePrefs:"भाषा प्राथमिकता",langSubtitle:"कुनै पनि भाषामा क्लिक गर्नुहोस् — तुरुन्तै बदलिन्छ।",confirmBooking:"बुकिङ पुष्टि",confirmPay:"पुष्टि गर्नुहोस् & भुक्तानी",bookDoctor:"डाक्टर बुक गर्नुहोस्",online:"अनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS स्थान",pushNotif:"सूचनाहरू",offlineMode:"अफलाइन मोड",searchHospital:"अस्पताल खोज्नुहोस्...",selectDoc:"✅ छानिएको"},
+  ks:{home:"ہوم",hospitals:"ہسپتال",bookings:"بکنگ",language:"زبان",settings:"سیٹنگ",selectSymptom:"🎯 علامت ییلہ",fever:"بوخار",accident:"حادثہ",general:"عام",pregnancy:"گرباواستھا",speakVoice:"کشمیری میں بولو",liveBeds:"📊 بیڈ حالت",availableDoctors:"👨‍⚕️ دستیاب ڈاکٹر",aiBestMatch:"AI بہترین",bookNow:"ہنوز بک کرو",allHospitals:"🏥 سبھ ہسپتال",myBookings:"📋 میری بکنگ",noBookings:"ابھی تک کوئی بکنگ نہیں۔",languagePrefs:"زبان ترجیح",langSubtitle:"کسی بھی زبان پر کلک کرو۔",confirmBooking:"بکنگ تصدیق",confirmPay:"تصدیق & ادائیگی",bookDoctor:"ڈاکٹر بک کرو",online:"آن لائن🟢",darkMode:"ڈارک موڈ",gpsLocation:"GPS مقام",pushNotif:"اطلاع",offlineMode:"آف لائن موڈ",searchHospital:"ہسپتال تلاش...",selectDoc:"✅ منتخب"},
+  mni:{home:"ꯍꯣꯝ",hospitals:"ꯑꯎꯁꯄꯔ꯭ꯇꯥꯜ",bookings:"ꯕꯨꯀꯤꯡ",language:"ꯂꯣꯟ",settings:"ꯁꯦꯇꯤꯡ",selectSymptom:"🎯 ꯂꯣꯢꯁꯤꯡ ꯍꯥꯏꯔꯨ",fever:"ꯑꯣꯀ꯭ꯁꯤꯟ",accident:"ꯑꯦꯛꯁꯤꯗꯦꯟꯇ",general:"ꯆꯨꯃꯥꯡ",pregnancy:"ꯐꯟꯗꯤꯕꯥ",speakVoice:"ꯃꯤꯇꯩꯂꯣꯟꯗ ꯋꯥ ꯌꯦꯡꯂꯨ",liveBeds:"📊 ꯕꯦꯗ ꯍꯥꯟꯊꯤꯕ",availableDoctors:"👨‍⚕️ ꯗꯥꯛꯇꯔ",aiBestMatch:"AI ꯁꯥꯕꯁꯤꯡ",bookNow:"ꯍꯥꯏꯔꯤꯕꯥ ꯕꯨꯛ",allHospitals:"🏥 ꯑꯎꯁꯄꯔ꯭ꯇꯥꯜ",myBookings:"📋 ꯑꯩꯒꯤ ꯕꯨꯀꯤꯡ",noBookings:"ꯕꯨꯀꯤꯡ ꯂꯩꯔꯦ।",languagePrefs:"ꯂꯣꯟ ꯄꯥꯝꯕ",langSubtitle:"ꯂꯣꯟ ꯇꯥꯐꯕ — ꯌꯥꯝꯅꯥ ꯁꯤꯒꯠꯇꯛꯂꯨ।",confirmBooking:"ꯕꯨꯀꯤꯡ ꯆꯥꯎꯈꯠꯄ",confirmPay:"ꯆꯥꯎꯈꯠꯄ & ꯄꯦꯝꯦꯟꯇ",bookDoctor:"ꯗꯥꯛꯇꯔ ꯕꯨꯛ",online:"ꯑꯣꯟꯂꯥꯢꯟ🟢",darkMode:"ꯗꯥꯔꯛ ꯃꯣꯗ",gpsLocation:"GPS",pushNotif:"ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ",offlineMode:"ꯑꯣꯐꯂꯥꯢꯟ",searchHospital:"ꯑꯎꯁꯄꯔ꯭ꯇꯥꯜ ꯍꯥꯡꯗꯣꯛꯅꯨ...",selectDoc:"✅ ꯍꯥꯢꯔꯤꯕ"},
+  sat:{home:"ᱦᱳᱢ",hospitals:"ᱫᱟᱠᱛᱟᱨ ᱜᱷᱚᱨ",bookings:"ᱵᱩᱠᱤᱝ",language:"ᱯᱟᱹᱨᱥᱤ",settings:"ᱥᱮᱴᱤᱝ",selectSymptom:"🎯 ᱞᱚᱠᱠᱷᱚᱱ ᱥᱮᱞᱮᱫ",fever:"ᱡ᱐ᱤᱭᱚ",accident:"ᱫᱩᱨᱜᱷᱚᱴᱱᱟ",general:"ᱥᱟᱫᱷᱟᱨᱚᱱ",pregnancy:"ᱜᱟᱨᱵᱷ",speakVoice:"ᱥᱟᱱᱛᱟᱲᱤᱛᱮ ᱩᱠᱩᱣ",liveBeds:"📊 ᱵᱮᱫ ᱦᱟᱹᱞ",availableDoctors:"👨‍⚕️ ᱫᱟᱠᱛᱟᱨ",aiBestMatch:"AI ᱵᱮᱥᱴ",bookNow:"ᱵᱩᱠ ᱠᱟᱹᱱᱟ",allHospitals:"🏥 ᱵᱷᱟᱹᱞᱤ ᱫᱟᱠᱛᱟᱨ ᱜᱷᱚᱨ",myBookings:"📋 ᱟᱢ ᱵᱩᱠᱤᱝ",noBookings:"ᱵᱩᱠᱤᱝ ᱵᱟᱝ ᱢᱮᱱᱟᱜ।",languagePrefs:"ᱯᱟᱹᱨᱥᱤ ᱥᱟᱜᱟᱣ",langSubtitle:"ᱯᱟᱹᱨᱥᱤ ᱛᱮ ᱠᱞᱤᱠ ᱠᱟᱹᱱᱟ।",confirmBooking:"ᱵᱩᱠᱤᱝ ᱯᱩᱥᱴᱤ",confirmPay:"ᱯᱩᱥᱴᱤ & ᱫᱟᱢ",bookDoctor:"ᱫᱟᱠᱛᱟᱨ ᱵᱩᱠ",online:"ᱚᱱᱞᱟᱭᱤᱱ🟢",darkMode:"ᱫᱟᱨᱠ ᱢᱳᱰ",gpsLocation:"GPS",pushNotif:"ᱥᱩᱪᱚᱱᱟ",offlineMode:"ᱚᱯᱞᱟᱭᱤᱱ",searchHospital:"ᱫᱟᱠᱛᱟᱨ ᱜᱷᱚᱨ ᱦᱩᱰᱤᱧ...",selectDoc:"✅ ᱥᱮᱞᱮᱫ"},
+  doi:{home:"होम",hospitals:"अस्पताल",bookings:"बुकिंग",language:"भाषा",settings:"सेटिंग",selectSymptom:"🎯 लक्षण चुनो",fever:"बुखार",accident:"हादसा",general:"आम",pregnancy:"गर्भ",speakVoice:"डोगरी च बोलो",liveBeds:"📊 बेड हालत",availableDoctors:"👨‍⚕️ डाक्दर",aiBestMatch:"AI बेस्ट",bookNow:"हुण बुक करो",allHospitals:"🏥 सारे अस्पताल",myBookings:"📋 मेरी बुकिंग",noBookings:"अजें तकर कोई बुकिंग नईं।",languagePrefs:"भाषा तरजीह",langSubtitle:"भाषा पर क्लिक करो — फट्टाफट बदलग।",confirmBooking:"बुकिंग पक्की",confirmPay:"पक्की & भुगतान",bookDoctor:"डाक्दर बुक करो",online:"ऑनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS जगह",pushNotif:"सूचना",offlineMode:"ऑफलाइन",searchHospital:"अस्पताल खोजो...",selectDoc:"✅ चुनया"},
+  bo:{home:"ꯍꯣꯝ",hospitals:"ꯑꯎꯁꯄꯔ꯭ꯇꯥꯜ",bookings:"ꯕꯨꯀꯤꯡ",language:"भाषा",settings:"सेटिंग",selectSymptom:"🎯 लक्षण बाछु",fever:"बुखार",accident:"दुर्घटना",general:"सामान्य",pregnancy:"गर्भ",speakVoice:"बड़ो भाषाय कथा कव",liveBeds:"📊 बेड हालत",availableDoctors:"👨‍⚕️ डाक्टर",aiBestMatch:"AI बेस्ट",bookNow:"आबिनो बुक कर",allHospitals:"🏥 सबखिनि अस्पताल",myBookings:"📋 मोर बुकिंग",noBookings:"बुकिंग नाथाकों।",languagePrefs:"भाषा प्राथमिकता",langSubtitle:"भाषाय क्लिक कर — लगे बदलिब।",confirmBooking:"बुकिंग निश्चित",confirmPay:"निश्चित & भुगतान",bookDoctor:"डाक्टर बुक कर",online:"अनलाइन🟢",darkMode:"डार्क मोड",gpsLocation:"GPS ठाय",pushNotif:"জাননী",offlineMode:"অফলাইন",searchHospital:"অস্পতাল বিচাৰক...",selectDoc:"✅ বাছনি"}
+};
+
 // ===================== DATA =====================
 const DATA = {
-  config:{
-    symptomMap:{fever:["fever","general"],accident:["trauma","icu"],general:["general"],pregnancy:["maternity","gynecology"]},
-    upiAmount:150
-  },
+  config:{symptomMap:{fever:["fever","general"],accident:["trauma","icu"],general:["general"],pregnancy:["maternity","gynecology"]},upiAmount:150},
   cities:{
     Indore:{gps:[22.7196,75.8577],hospitals:{
-      "MY Hospital":{gps:[22.7196,75.8577],phone:"0731-2700500",beds:{fever:{free:3,total:25,wait:"45min"},general:{free:8,total:50,wait:"2hr"},trauma:{free:2,total:15,wait:"30min"},icu:{free:1,total:10,wait:"4hr"}},doctors:[{name:"Dr.Amit Sharma",spec:"Medicine",phone:"0731-2700500",slots:{total:20,booked:8,pct:40,nextFree:"14:00",today:["10:00F","11:00F","12:00B","14:00F","15:00B"]}},{name:"Dr.Priya Patel",spec:"Pediatrics",phone:"0731-2700511",slots:{total:15,booked:12,pct:80,nextFree:"15:30",today:["10:00B","11:00B","12:00B","15:30F"]}}]},
-      "Bombay Hospital Indore":{gps:[22.7250,75.8700],phone:"0731-4077000",beds:{fever:{free:6,total:30,wait:"30min"},general:{free:14,total:60,wait:"1hr"},trauma:{free:3,total:12,wait:"20min"},icu:{free:2,total:8,wait:"3hr"}},doctors:[{name:"Dr.Neha Joshi",spec:"General Medicine",phone:"0731-4077001",slots:{total:18,booked:5,pct:28,nextFree:"13:00",today:["13:00F","14:00F","15:00F"]}},{name:"Dr.Suresh Malviya",spec:"Orthopedics",phone:"0731-4077002",slots:{total:15,booked:9,pct:60,nextFree:"14:30"}}]},
-      "Choithram Hospital":{gps:[22.7100,75.8800],phone:"0731-4200000",beds:{fever:{free:4,total:20,wait:"1hr"},general:{free:10,total:45,wait:"2hr"},maternity:{free:5,total:18,wait:"1hr"},gynecology:{free:3,total:12,wait:"45min"}},doctors:[{name:"Dr.Anita Sharma",spec:"Gynecology",phone:"0731-4200001",slots:{total:20,booked:7,pct:35,nextFree:"13:30",today:["13:30F","14:30F","15:30F"]}},{name:"Dr.Vikram Patel",spec:"General Surgery",phone:"0731-4200002",slots:{total:16,booked:11,pct:69,nextFree:"16:00"}}]},
-      "SAIMS Hospital":{gps:[22.6900,75.8650],phone:"0731-4231000",beds:{fever:{free:9,total:35,wait:"20min"},general:{free:22,total:70,wait:"1hr"},trauma:{free:5,total:18,wait:"15min"},icu:{free:3,total:14,wait:"2hr"}},doctors:[{name:"Dr.Ramesh Bansal",spec:"Neurology",phone:"0731-4231001",slots:{total:16,booked:4,pct:25,nextFree:"12:30",today:["12:30F","13:30F","14:30F"]}},{name:"Dr.Pooja Dubey",spec:"Cardiology",phone:"0731-4231002",slots:{total:18,booked:9,pct:50,nextFree:"15:00"}}]},
-      "Index Medical College Hospital":{gps:[22.7050,75.8300],phone:"0731-4715000",beds:{fever:{free:7,total:40,wait:"35min"},general:{free:18,total:80,wait:"1.5hr"},maternity:{free:8,total:25,wait:"40min"},trauma:{free:4,total:16,wait:"25min"}},doctors:[{name:"Dr.Sheela Tomar",spec:"Obstetrics",phone:"0731-4715001",slots:{total:22,booked:8,pct:36,nextFree:"13:00"}},{name:"Dr.Ajay Mishra",spec:"Emergency Medicine",phone:"0731-4715002",slots:{total:20,booked:15,pct:75,nextFree:"16:30"}}]},
-      "Apollo Sage Hospital":{gps:[22.7300,75.8900],phone:"0731-4715500",beds:{fever:{free:5,total:28,wait:"50min"},general:{free:11,total:55,wait:"2hr"},icu:{free:2,total:10,wait:"3.5hr"},gynecology:{free:4,total:14,wait:"1hr"}},doctors:[{name:"Dr.Kavya Singh",spec:"Internal Medicine",phone:"0731-4715501",slots:{total:20,booked:6,pct:30,nextFree:"13:30"}},{name:"Dr.Mohit Agarwal",spec:"Urology",phone:"0731-4715502",slots:{total:14,booked:10,pct:71,nextFree:"17:00"}}]},
-      "CHL Hospital Indore":{gps:[22.7150,75.8450],phone:"0731-4747400",beds:{fever:{free:2,total:18,wait:"1.5hr"},general:{free:9,total:40,wait:"2.5hr"},trauma:{free:1,total:8,wait:"45min"},maternity:{free:6,total:20,wait:"30min"}},doctors:[{name:"Dr.Shobha Rani",spec:"Gynecology",phone:"0731-4747401",slots:{total:18,booked:13,pct:72,nextFree:"16:00"}},{name:"Dr.Nitin Jain",spec:"Pediatrics",phone:"0731-4747402",slots:{total:16,booked:5,pct:31,nextFree:"13:00"}}]}
+      "MY Hospital":{gps:[22.7196,75.8577],phone:"0731-2700500",beds:{fever:{free:3,total:25,wait:"45min"},general:{free:8,total:50,wait:"2hr"},trauma:{free:2,total:15,wait:"30min"},icu:{free:1,total:10,wait:"4hr"}},doctors:[{name:"Dr.Amit Sharma",spec:"Medicine",slots:{total:20,booked:8,pct:40,nextFree:"14:00",today:["10:00F","11:00F","12:00B","14:00F","15:00B"]}},{name:"Dr.Priya Patel",spec:"Pediatrics",slots:{total:15,booked:12,pct:80,nextFree:"15:30",today:["10:00B","11:00B","12:00B","15:30F"]}}]},
+      "Bombay Hospital Indore":{gps:[22.7250,75.8700],phone:"0731-4077000",beds:{fever:{free:6,total:30,wait:"30min"},general:{free:14,total:60,wait:"1hr"},trauma:{free:3,total:12,wait:"20min"},icu:{free:2,total:8,wait:"3hr"}},doctors:[{name:"Dr.Neha Joshi",spec:"General Medicine",slots:{total:18,booked:5,pct:28,nextFree:"13:00",today:["13:00F","14:00F","15:00F"]}},{name:"Dr.Suresh Malviya",spec:"Orthopedics",slots:{total:15,booked:9,pct:60,nextFree:"14:30"}}]},
+      "Choithram Hospital":{gps:[22.7100,75.8800],phone:"0731-4200000",beds:{fever:{free:4,total:20,wait:"1hr"},general:{free:10,total:45,wait:"2hr"},maternity:{free:5,total:18,wait:"1hr"},gynecology:{free:3,total:12,wait:"45min"}},doctors:[{name:"Dr.Anita Sharma",spec:"Gynecology",slots:{total:20,booked:7,pct:35,nextFree:"13:30",today:["13:30F","14:30F","15:30F"]}},{name:"Dr.Vikram Patel",spec:"General Surgery",slots:{total:16,booked:11,pct:69,nextFree:"16:00"}}]},
+      "SAIMS Hospital":{gps:[22.6900,75.8650],phone:"0731-4231000",beds:{fever:{free:9,total:35,wait:"20min"},general:{free:22,total:70,wait:"1hr"},trauma:{free:5,total:18,wait:"15min"},icu:{free:3,total:14,wait:"2hr"}},doctors:[{name:"Dr.Ramesh Bansal",spec:"Neurology",slots:{total:16,booked:4,pct:25,nextFree:"12:30",today:["12:30F","13:30F","14:30F"]}},{name:"Dr.Pooja Dubey",spec:"Cardiology",slots:{total:18,booked:9,pct:50,nextFree:"15:00"}}]},
+      "Index Medical College Hospital":{gps:[22.7050,75.8300],phone:"0731-4715000",beds:{fever:{free:7,total:40,wait:"35min"},general:{free:18,total:80,wait:"1.5hr"},maternity:{free:8,total:25,wait:"40min"},trauma:{free:4,total:16,wait:"25min"}},doctors:[{name:"Dr.Sheela Tomar",spec:"Obstetrics",slots:{total:22,booked:8,pct:36,nextFree:"13:00"}},{name:"Dr.Ajay Mishra",spec:"Emergency Medicine",slots:{total:20,booked:15,pct:75,nextFree:"16:30"}}]},
+      "Apollo Sage Hospital":{gps:[22.7300,75.8900],phone:"0731-4715500",beds:{fever:{free:5,total:28,wait:"50min"},general:{free:11,total:55,wait:"2hr"},icu:{free:2,total:10,wait:"3.5hr"},gynecology:{free:4,total:14,wait:"1hr"}},doctors:[{name:"Dr.Kavya Singh",spec:"Internal Medicine",slots:{total:20,booked:6,pct:30,nextFree:"13:30"}},{name:"Dr.Mohit Agarwal",spec:"Urology",slots:{total:14,booked:10,pct:71,nextFree:"17:00"}}]},
+      "CHL Hospital Indore":{gps:[22.7150,75.8450],phone:"0731-4747400",beds:{fever:{free:2,total:18,wait:"1.5hr"},general:{free:9,total:40,wait:"2.5hr"},trauma:{free:1,total:8,wait:"45min"},maternity:{free:6,total:20,wait:"30min"}},doctors:[{name:"Dr.Shobha Rani",spec:"Gynecology",slots:{total:18,booked:13,pct:72,nextFree:"16:00"}},{name:"Dr.Nitin Jain",spec:"Pediatrics",slots:{total:16,booked:5,pct:31,nextFree:"13:00"}}]}
     }},
     Jabalpur:{gps:[23.1815,79.9864],hospitals:{
-      "Govind Das Hospital":{gps:[23.1815,79.9864],phone:"0761-2677999",beds:{fever:{free:5,total:30,wait:"30min"},general:{free:12,total:60,wait:"1.5hr"},trauma:{free:4,total:10,wait:"15min"},icu:{free:1,total:6,wait:"5hr"}},doctors:[{name:"Dr.Rajesh Gupta",spec:"General Surgery",phone:"0761-2677998",slots:{total:18,booked:6,pct:33,nextFree:"13:30",today:["13:30F","14:30F","15:30F"]}},{name:"Dr.Meena Shukla",spec:"Medicine",phone:"0761-2677997",slots:{total:20,booked:14,pct:70,nextFree:"16:00"}}]},
-      "Victoria Hospital":{gps:[23.1900,79.9700],phone:"0761-2670100",beds:{fever:{free:8,total:40,wait:"20min"},general:{free:18,total:80,wait:"1hr"},maternity:{free:4,total:15,wait:"1hr"}},doctors:[{name:"Dr.Pradeep Tiwari",spec:"Pediatrics",phone:"0761-2670101",slots:{total:22,booked:10,pct:45,nextFree:"13:00"}}]},
-      "Madan Mahal Hospital":{gps:[23.1750,79.9600],phone:"0761-2450200",beds:{fever:{free:6,total:32,wait:"25min"},general:{free:14,total:65,wait:"1.5hr"},trauma:{free:3,total:12,wait:"20min"},gynecology:{free:2,total:8,wait:"1hr"}},doctors:[{name:"Dr.Sunil Yadav",spec:"Orthopedics",phone:"0761-2450201",slots:{total:18,booked:7,pct:39,nextFree:"14:00"}},{name:"Dr.Rekha Pandey",spec:"Medicine",phone:"0761-2450202",slots:{total:20,booked:9,pct:45,nextFree:"13:30"}}]},
-      "Netaji Subhash Chandra Bose Medical College":{gps:[23.1600,79.9550],phone:"0761-2623272",beds:{fever:{free:10,total:60,wait:"20min"},general:{free:25,total:120,wait:"1hr"},trauma:{free:6,total:25,wait:"15min"},icu:{free:3,total:15,wait:"2hr"},maternity:{free:7,total:30,wait:"40min"}},doctors:[{name:"Dr.Anil Pathak",spec:"General Medicine",phone:"0761-2623273",slots:{total:25,booked:10,pct:40,nextFree:"13:00"}},{name:"Dr.Lata Srivastava",spec:"Obstetrics",phone:"0761-2623274",slots:{total:20,booked:8,pct:40,nextFree:"14:30"}},{name:"Dr.Vivek Tripathi",spec:"Trauma Surgery",phone:"0761-2623275",slots:{total:15,booked:5,pct:33,nextFree:"12:30"}}]},
-      "Narayana Hospital Jabalpur":{gps:[23.1950,79.9450],phone:"0761-2601000",beds:{fever:{free:4,total:22,wait:"1hr"},general:{free:10,total:50,wait:"2hr"},icu:{free:2,total:8,wait:"4hr"}},doctors:[{name:"Dr.Deepak Saxena",spec:"Cardiology",phone:"0761-2601001",slots:{total:16,booked:11,pct:69,nextFree:"16:00"}},{name:"Dr.Nisha Mishra",spec:"Neurology",phone:"0761-2601002",slots:{total:14,booked:6,pct:43,nextFree:"14:00"}}]}
+      "Govind Das Hospital":{gps:[23.1815,79.9864],phone:"0761-2677999",beds:{fever:{free:5,total:30,wait:"30min"},general:{free:12,total:60,wait:"1.5hr"},trauma:{free:4,total:10,wait:"15min"},icu:{free:1,total:6,wait:"5hr"}},doctors:[{name:"Dr.Rajesh Gupta",spec:"General Surgery",slots:{total:18,booked:6,pct:33,nextFree:"13:30",today:["13:30F","14:30F","15:30F"]}},{name:"Dr.Meena Shukla",spec:"Medicine",slots:{total:20,booked:14,pct:70,nextFree:"16:00"}}]},
+      "Victoria Hospital":{gps:[23.1900,79.9700],phone:"0761-2670100",beds:{fever:{free:8,total:40,wait:"20min"},general:{free:18,total:80,wait:"1hr"},maternity:{free:4,total:15,wait:"1hr"}},doctors:[{name:"Dr.Pradeep Tiwari",spec:"Pediatrics",slots:{total:22,booked:10,pct:45,nextFree:"13:00"}}]},
+      "Madan Mahal Hospital":{gps:[23.1750,79.9600],phone:"0761-2450200",beds:{fever:{free:6,total:32,wait:"25min"},general:{free:14,total:65,wait:"1.5hr"},trauma:{free:3,total:12,wait:"20min"},gynecology:{free:2,total:8,wait:"1hr"}},doctors:[{name:"Dr.Sunil Yadav",spec:"Orthopedics",slots:{total:18,booked:7,pct:39,nextFree:"14:00"}},{name:"Dr.Rekha Pandey",spec:"Medicine",slots:{total:20,booked:9,pct:45,nextFree:"13:30"}}]},
+      "NSCB Medical College":{gps:[23.1600,79.9550],phone:"0761-2623272",beds:{fever:{free:10,total:60,wait:"20min"},general:{free:25,total:120,wait:"1hr"},trauma:{free:6,total:25,wait:"15min"},icu:{free:3,total:15,wait:"2hr"},maternity:{free:7,total:30,wait:"40min"}},doctors:[{name:"Dr.Anil Pathak",spec:"General Medicine",slots:{total:25,booked:10,pct:40,nextFree:"13:00"}},{name:"Dr.Lata Srivastava",spec:"Obstetrics",slots:{total:20,booked:8,pct:40,nextFree:"14:30"}},{name:"Dr.Vivek Tripathi",spec:"Trauma Surgery",slots:{total:15,booked:5,pct:33,nextFree:"12:30"}}]},
+      "Narayana Hospital Jabalpur":{gps:[23.1950,79.9450],phone:"0761-2601000",beds:{fever:{free:4,total:22,wait:"1hr"},general:{free:10,total:50,wait:"2hr"},icu:{free:2,total:8,wait:"4hr"}},doctors:[{name:"Dr.Deepak Saxena",spec:"Cardiology",slots:{total:16,booked:11,pct:69,nextFree:"16:00"}},{name:"Dr.Nisha Mishra",spec:"Neurology",slots:{total:14,booked:6,pct:43,nextFree:"14:00"}}]}
     }},
     Bhopal:{gps:[23.2599,77.4126],hospitals:{
-      "Hamidia Hospital":{gps:[23.2599,77.4126],phone:"0755-2540222",beds:{fever:{free:7,total:40,wait:"40min"},general:{free:15,total:80,wait:"2hr"},trauma:{free:3,total:20,wait:"25min"},icu:{free:2,total:12,wait:"3hr"}},doctors:[{name:"Dr.Sunita Verma",spec:"Gynecology",phone:"0755-2540223",slots:{total:25,booked:10,pct:40,nextFree:"14:30",today:["14:30F","15:30F","16:30F"]}},{name:"Dr.Arun Soni",spec:"Medicine",phone:"0755-2540224",slots:{total:20,booked:8,pct:40,nextFree:"13:00"}}]},
-      "JP Hospital Bhopal":{gps:[23.2650,77.4200],phone:"0755-2661000",beds:{fever:{free:5,total:35,wait:"50min"},general:{free:20,total:90,wait:"1.5hr"},maternity:{free:6,total:20,wait:"45min"},gynecology:{free:2,total:10,wait:"2hr"}},doctors:[{name:"Dr.Kavita Rao",spec:"Gynecology",phone:"0755-2661001",slots:{total:18,booked:6,pct:33,nextFree:"13:30"}}]},
-      "Gandhi Medical College Hospital":{gps:[23.2560,77.4050],phone:"0755-2574400",beds:{fever:{free:12,total:55,wait:"30min"},general:{free:28,total:100,wait:"1hr"},trauma:{free:5,total:22,wait:"20min"},icu:{free:4,total:18,wait:"2.5hr"},maternity:{free:9,total:35,wait:"45min"}},doctors:[{name:"Dr.Hemant Choudhary",spec:"General Surgery",phone:"0755-2574401",slots:{total:22,booked:8,pct:36,nextFree:"13:00"}},{name:"Dr.Madhuri Dixit",spec:"Pediatrics",phone:"0755-2574402",slots:{total:20,booked:7,pct:35,nextFree:"14:00"}},{name:"Dr.Bharat Soni",spec:"Emergency Medicine",phone:"0755-2574403",slots:{total:18,booked:12,pct:67,nextFree:"16:30"}}]},
-      "Bansal Hospital Bhopal":{gps:[23.2700,77.4350],phone:"0755-4900000",beds:{fever:{free:3,total:20,wait:"1.5hr"},general:{free:8,total:45,wait:"2hr"},icu:{free:1,total:8,wait:"5hr"},gynecology:{free:5,total:16,wait:"1hr"}},doctors:[{name:"Dr.Sangeeta Khatri",spec:"Internal Medicine",phone:"0755-4900001",slots:{total:20,booked:14,pct:70,nextFree:"16:00"}},{name:"Dr.Rakesh Dwivedi",spec:"Orthopedics",phone:"0755-4900002",slots:{total:16,booked:5,pct:31,nextFree:"13:00"}}]},
-      "Bhopal Memorial Hospital":{gps:[23.2480,77.3990],phone:"0755-2740762",beds:{fever:{free:8,total:45,wait:"35min"},general:{free:20,total:85,wait:"1.5hr"},trauma:{free:4,total:18,wait:"20min"},icu:{free:2,total:10,wait:"3hr"},maternity:{free:5,total:22,wait:"50min"}},doctors:[{name:"Dr.Preeti Agrawal",spec:"Obstetrics",phone:"0755-2740763",slots:{total:24,booked:9,pct:38,nextFree:"13:30"}},{name:"Dr.Yogesh Tiwari",spec:"Medicine",phone:"0755-2740764",slots:{total:20,booked:11,pct:55,nextFree:"15:00"}}]},
-      "AIIMS Bhopal":{gps:[23.2000,77.3900],phone:"0755-2672335",beds:{fever:{free:15,total:60,wait:"25min"},general:{free:35,total:120,wait:"1hr"},trauma:{free:8,total:30,wait:"10min"},icu:{free:5,total:20,wait:"2hr"},maternity:{free:10,total:40,wait:"30min"},gynecology:{free:4,total:15,wait:"1hr"}},doctors:[{name:"Dr.Ashok Yadav",spec:"Cardiology",phone:"0755-2672336",slots:{total:28,booked:10,pct:36,nextFree:"12:30"}},{name:"Dr.Ritu Sharma",spec:"Neurology",phone:"0755-2672337",slots:{total:25,booked:8,pct:32,nextFree:"13:00"}},{name:"Dr.Suhas Nair",spec:"Trauma Surgery",phone:"0755-2672338",slots:{total:20,booked:6,pct:30,nextFree:"12:00"}}]}
+      "Hamidia Hospital":{gps:[23.2599,77.4126],phone:"0755-2540222",beds:{fever:{free:7,total:40,wait:"40min"},general:{free:15,total:80,wait:"2hr"},trauma:{free:3,total:20,wait:"25min"},icu:{free:2,total:12,wait:"3hr"}},doctors:[{name:"Dr.Sunita Verma",spec:"Gynecology",slots:{total:25,booked:10,pct:40,nextFree:"14:30",today:["14:30F","15:30F","16:30F"]}},{name:"Dr.Arun Soni",spec:"Medicine",slots:{total:20,booked:8,pct:40,nextFree:"13:00"}}]},
+      "JP Hospital Bhopal":{gps:[23.2650,77.4200],phone:"0755-2661000",beds:{fever:{free:5,total:35,wait:"50min"},general:{free:20,total:90,wait:"1.5hr"},maternity:{free:6,total:20,wait:"45min"},gynecology:{free:2,total:10,wait:"2hr"}},doctors:[{name:"Dr.Kavita Rao",spec:"Gynecology",slots:{total:18,booked:6,pct:33,nextFree:"13:30"}}]},
+      "Gandhi Medical College":{gps:[23.2560,77.4050],phone:"0755-2574400",beds:{fever:{free:12,total:55,wait:"30min"},general:{free:28,total:100,wait:"1hr"},trauma:{free:5,total:22,wait:"20min"},icu:{free:4,total:18,wait:"2.5hr"},maternity:{free:9,total:35,wait:"45min"}},doctors:[{name:"Dr.Hemant Choudhary",spec:"General Surgery",slots:{total:22,booked:8,pct:36,nextFree:"13:00"}},{name:"Dr.Madhuri Dixit",spec:"Pediatrics",slots:{total:20,booked:7,pct:35,nextFree:"14:00"}},{name:"Dr.Bharat Soni",spec:"Emergency Medicine",slots:{total:18,booked:12,pct:67,nextFree:"16:30"}}]},
+      "Bansal Hospital Bhopal":{gps:[23.2700,77.4350],phone:"0755-4900000",beds:{fever:{free:3,total:20,wait:"1.5hr"},general:{free:8,total:45,wait:"2hr"},icu:{free:1,total:8,wait:"5hr"},gynecology:{free:5,total:16,wait:"1hr"}},doctors:[{name:"Dr.Sangeeta Khatri",spec:"Internal Medicine",slots:{total:20,booked:14,pct:70,nextFree:"16:00"}},{name:"Dr.Rakesh Dwivedi",spec:"Orthopedics",slots:{total:16,booked:5,pct:31,nextFree:"13:00"}}]},
+      "Bhopal Memorial Hospital":{gps:[23.2480,77.3990],phone:"0755-2740762",beds:{fever:{free:8,total:45,wait:"35min"},general:{free:20,total:85,wait:"1.5hr"},trauma:{free:4,total:18,wait:"20min"},icu:{free:2,total:10,wait:"3hr"},maternity:{free:5,total:22,wait:"50min"}},doctors:[{name:"Dr.Preeti Agrawal",spec:"Obstetrics",slots:{total:24,booked:9,pct:38,nextFree:"13:30"}},{name:"Dr.Yogesh Tiwari",spec:"Medicine",slots:{total:20,booked:11,pct:55,nextFree:"15:00"}}]},
+      "AIIMS Bhopal":{gps:[23.2000,77.3900],phone:"0755-2672335",beds:{fever:{free:15,total:60,wait:"25min"},general:{free:35,total:120,wait:"1hr"},trauma:{free:8,total:30,wait:"10min"},icu:{free:5,total:20,wait:"2hr"},maternity:{free:10,total:40,wait:"30min"},gynecology:{free:4,total:15,wait:"1hr"}},doctors:[{name:"Dr.Ashok Yadav",spec:"Cardiology",slots:{total:28,booked:10,pct:36,nextFree:"12:30"}},{name:"Dr.Ritu Sharma",spec:"Neurology",slots:{total:25,booked:8,pct:32,nextFree:"13:00"}},{name:"Dr.Suhas Nair",spec:"Trauma Surgery",slots:{total:20,booked:6,pct:30,nextFree:"12:00"}}]}
     }}
   }
 };
 
-const LANGUAGES = [
+const LANGUAGES=[
   {code:"hi",name:"Hindi",native:"हिंदी",script:"Devanagari",voiceCode:"hi-IN"},
   {code:"en",name:"English",native:"English",script:"Latin",voiceCode:"en-IN"},
   {code:"bn",name:"Bengali",native:"বাংলা",script:"Bengali",voiceCode:"bn-IN"},
@@ -349,125 +330,71 @@ const LANGUAGES = [
   {code:"mni",name:"Manipuri",native:"মৈতৈলোন্",script:"Meitei Mayek",voiceCode:"mni-IN"},
   {code:"sat",name:"Santali",native:"ᱥᱟᱱᱛᱟᱲᱤ",script:"Ol Chiki",voiceCode:"sat-IN"},
   {code:"doi",name:"Dogri",native:"डोगरी",script:"Devanagari",voiceCode:"doi-IN"},
-  {code:"bo",name:"Bodo",native:"बर'/बड़",script:"Devanagari",voiceCode:"bo-IN"}
+  {code:"bo",name:"Bodo",native:"बड़/बर'",script:"Devanagari",voiceCode:"bo-IN"}
 ];
 
 // ===================== STATE =====================
-let state = {city:"Indore",hospital:"MY Hospital",symptom:"fever",userGPS:null,selectedLang:"hi",selectedLangName:"Hindi",bookings:[],pendingBooking:null};
+let state={city:"Indore",hospital:"MY Hospital",symptom:"fever",userGPS:null,selectedLang:"hi",selectedDoctor:null,bookings:[],pendingBooking:null};
 let recognition=null,isListening=false;
 
 // ===================== INIT =====================
 window.onload=()=>{
-  populateHospitals();
-  renderBeds();
-  renderDoctors();
-  renderBestMatch();
-  renderHospitalList();
-  renderLangGrid(LANGUAGES);
-  getGPS();
-  checkOnline();
-  setInterval(checkOnline,5000);
+  populateHospitals();renderBeds();renderDoctors();renderBestMatch();renderHospitalList();renderLangGrid(LANGUAGES);
+  getGPS();checkOnline();setInterval(checkOnline,5000);
+  applyTranslations('hi');
 };
 
-function checkOnline(){
-  const el=document.getElementById('offlineStatus');
-  if(navigator.onLine){el.innerHTML='<span class="status-dot dot-green"></span>Online🟢';}
-  else{el.innerHTML='<span class="status-dot dot-red"></span>Offline🔴';}
-}
+function checkOnline(){const el=document.getElementById('offlineStatus');el.innerHTML=navigator.onLine?`<span class="status-dot dot-green"></span><span data-i18n="online">${tr('online')}</span>`:`<span class="status-dot dot-red"></span>Offline🔴`;}
 
 function populateHospitals(){
-  const city=state.city;
-  const sel=document.getElementById('hospSelect');
-  sel.innerHTML='';
-  Object.keys(DATA.cities[city].hospitals).forEach(h=>{
-    const o=document.createElement('option');
-    o.value=h;o.textContent=h;sel.appendChild(o);
-  });
-  state.hospital=Object.keys(DATA.cities[city].hospitals)[0];
+  const sel=document.getElementById('hospSelect');sel.innerHTML='';
+  Object.keys(DATA.cities[state.city].hospitals).forEach(h=>{const o=document.createElement('option');o.value=h;o.textContent=h;sel.appendChild(o);});
+  state.hospital=Object.keys(DATA.cities[state.city].hospitals)[0];
+  state.selectedDoctor=null;
 }
-
-function onCityChange(){
-  state.city=document.getElementById('citySelect').value;
-  populateHospitals();
-  renderAll();
-}
-function onHospChange(){
-  state.hospital=document.getElementById('hospSelect').value;
-  renderAll();
-}
+function onCityChange(){state.city=document.getElementById('citySelect').value;populateHospitals();renderAll();}
+function onHospChange(){state.hospital=document.getElementById('hospSelect').value;state.selectedDoctor=null;renderAll();}
 function renderAll(){renderBeds();renderDoctors();renderBestMatch();renderHospitalList();}
 
-// ===================== GPS =====================
-function haversine(a,b){
-  const R=6371;
-  const dLat=(b[0]-a[0])*Math.PI/180;
-  const dLon=(b[1]-a[1])*Math.PI/180;
-  const x=Math.sin(dLat/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLon/2)**2;
-  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+// ===================== TRANSLATION ENGINE =====================
+function tr(key){return (T[state.selectedLang]&&T[state.selectedLang][key])||T['en'][key]||key;}
+
+function applyTranslations(code){
+  state.selectedLang=code;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    el.textContent=tr(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-placeholder');
+    el.placeholder=tr(key);
+  });
+  const vBtn=document.getElementById('voiceBtnText');
+  if(vBtn)vBtn.textContent=tr('speakVoice');
 }
+
+// ===================== GPS =====================
+function haversine(a,b){const R=6371,dLat=(b[0]-a[0])*Math.PI/180,dLon=(b[1]-a[1])*Math.PI/180,x=Math.sin(dLat/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
 function getGPS(){
-  const btn=document.getElementById('gpsBtn');
-  const statusEl=document.getElementById('gpsStatus');
-  const deniedEl=document.getElementById('gpsDenied');
-  btn.textContent='⏳ Locating...';btn.disabled=true;
-  statusEl.textContent='Requesting location permission...';
-  statusEl.style.color='#f59e0b';
-  deniedEl.style.display='none';
-  if(!navigator.geolocation){
-    statusEl.textContent='❌ Geolocation not supported by your browser.';
-    statusEl.style.color='#ef4444';
-    btn.textContent='📡 Detect';btn.disabled=false;
-    return;
-  }
+  const btn=document.getElementById('gpsBtn'),sEl=document.getElementById('gpsStatus'),dEl=document.getElementById('gpsDenied');
+  btn.textContent='⏳...';btn.disabled=true;sEl.textContent='Requesting...';sEl.style.color='#f59e0b';dEl.style.display='none';
+  if(!navigator.geolocation){sEl.textContent='❌ Not supported';sEl.style.color='#ef4444';btn.textContent='📡 Detect';btn.disabled=false;return;}
   navigator.geolocation.getCurrentPosition(
-    p=>{
-      state.userGPS=[p.coords.latitude,p.coords.longitude];
-      const acc=Math.round(p.coords.accuracy);
-      statusEl.innerHTML=`✅ <b>Located!</b> ${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)}<br><span style="color:#94a3b8;">Accuracy: ±${acc}m</span>`;
-      statusEl.style.color='var(--mohfw-green)';
-      btn.textContent='🔄 Refresh';btn.disabled=false;
-      updateDistance();
-      showToast(`📍 GPS locked! Accuracy ±${acc}m`);
-    },
-    err=>{
-      btn.textContent='📡 Detect';btn.disabled=false;
-      if(err.code===1){
-        statusEl.textContent='⚠️ Permission denied.';
-        statusEl.style.color='#ef4444';
-        deniedEl.style.display='block';
-      } else if(err.code===2){
-        statusEl.textContent='❌ Position unavailable. Try manual entry below.';
-        statusEl.style.color='#ef4444';
-        deniedEl.style.display='block';
-      } else {
-        statusEl.textContent='⏱️ Timed out. Try again or enter manually.';
-        statusEl.style.color='#f59e0b';
-        deniedEl.style.display='block';
-      }
-      state.userGPS=DATA.cities[state.city].gps;
-      updateDistance();
-    },
+    p=>{state.userGPS=[p.coords.latitude,p.coords.longitude];const acc=Math.round(p.coords.accuracy);sEl.innerHTML=`✅ <b>${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)}</b><br><span style="color:#94a3b8;">±${acc}m</span>`;sEl.style.color='var(--mohfw-green)';btn.textContent='🔄 Refresh';btn.disabled=false;updateDistance();showToast(`📍 GPS locked! ±${acc}m`);},
+    err=>{btn.textContent='📡 Detect';btn.disabled=false;sEl.textContent=err.code===1?'⚠️ Permission denied.':'❌ Unavailable.';sEl.style.color='#ef4444';dEl.style.display='block';state.userGPS=DATA.cities[state.city].gps;updateDistance();},
     {enableHighAccuracy:true,timeout:10000,maximumAge:0}
   );
 }
 function applyManualGPS(){
-  const lat=parseFloat(document.getElementById('latInput').value);
-  const lon=parseFloat(document.getElementById('lonInput').value);
-  if(isNaN(lat)||isNaN(lon)||lat<8||lat>37||lon<68||lon>98){
-    showToast('❌ Please enter valid India coordinates');return;
-  }
-  state.userGPS=[lat,lon];
-  document.getElementById('gpsStatus').innerHTML=`✅ <b>Manual:</b> ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-  document.getElementById('gpsStatus').style.color='var(--mohfw-green)';
-  document.getElementById('gpsDenied').style.display='none';
-  updateDistance();
-  showToast(`📍 Manual location set: ${lat.toFixed(4)}, ${lon.toFixed(4)}`);
+  const lat=parseFloat(document.getElementById('latInput').value),lon=parseFloat(document.getElementById('lonInput').value);
+  if(isNaN(lat)||isNaN(lon)||lat<8||lat>37||lon<68||lon>98){showToast('❌ Invalid coordinates');return;}
+  state.userGPS=[lat,lon];document.getElementById('gpsStatus').innerHTML=`✅ <b>${lat.toFixed(4)}, ${lon.toFixed(4)}</b>`;document.getElementById('gpsStatus').style.color='var(--mohfw-green)';document.getElementById('gpsDenied').style.display='none';updateDistance();showToast(`📍 Manual: ${lat.toFixed(4)}, ${lon.toFixed(4)}`);
 }
 function updateDistance(){
   const hosp=DATA.cities[state.city].hospitals[state.hospital];
-  const dist=haversine(state.userGPS,hosp.gps);
+  const dist=haversine(state.userGPS||DATA.cities[state.city].gps,hosp.gps);
   const eta=Math.round(dist/40*60);
-  document.getElementById('distanceTag').textContent=`📍 ${dist.toFixed(1)}km | ${eta}min drive`;
+  document.getElementById('distanceTag').textContent=`📍 ${dist.toFixed(1)}km | ${eta}min`;
 }
 
 // ===================== BEDS =====================
@@ -480,40 +407,62 @@ function renderBeds(){
     const cls=pct>80?'bed-critical':pct>50?'bed-low':'bed-free';
     const match=bedTypes.includes(type);
     html+=`<div style="margin-bottom:10px;${match?'border-left:3px solid var(--mohfw-green);padding-left:8px':''}">
-      <div class="d-flex justify-content-between" style="font-size:13px;">
-        <span style="font-weight:600;text-transform:capitalize;">${match?'✅':'🛏️'} ${type.toUpperCase()} Beds</span>
-        <span style="color:${b.free===0?'#ef4444':b.free<3?'#f59e0b':'var(--mohfw-green)'}"><b>${b.free}</b>/${b.total} free</span>
-      </div>
+      <div class="d-flex justify-content-between" style="font-size:13px;"><span style="font-weight:600;text-transform:capitalize;">${match?'✅':'🛏️'} ${type.toUpperCase()}</span><span style="color:${b.free===0?'#ef4444':b.free<3?'#f59e0b':'var(--mohfw-green)'}"><b>${b.free}</b>/${b.total} free</span></div>
       <div class="bed-bar"><div class="bed-fill ${cls}" style="width:${pct}%"></div></div>
       <div style="font-size:10px;color:#94a3b8;">Wait: ${b.wait||'N/A'} • ${pct}% occupied</div>
     </div>`;
   });
-  document.getElementById('bedDisplay').innerHTML=html||'<p style="color:#94a3b8;font-size:13px;">No beds data</p>';
+  document.getElementById('bedDisplay').innerHTML=html;
 }
 
 // ===================== DOCTORS =====================
 function renderDoctors(){
   const hosp=DATA.cities[state.city].hospitals[state.hospital];
   let html='';
-  hosp.doctors.forEach(doc=>{
+  hosp.doctors.forEach((doc,idx)=>{
     const pct=doc.slots.pct||Math.round(doc.slots.booked/doc.slots.total*100);
     const col=pct>80?'#ef4444':pct>50?'#f59e0b':'var(--mohfw-green)';
+    const isSelected=state.selectedDoctor&&state.selectedDoctor.name===doc.name;
     let slotsHtml='';
-    if(doc.slots.today){doc.slots.today.forEach(s=>{const free=s.endsWith('F');slotsHtml+=`<span class="slot-dot ${free?'slot-free':'slot-booked'}">${s.replace('F','').replace('B','')}</span>`;});}
-    html+=`<div class="doctor-card">
+    if(doc.slots.today){doc.slots.today.forEach(s=>{const free=s.endsWith('F');slotsHtml+=`<span class="slot-dot ${free?'slot-free':'slot-booked'}">${s.replace(/[FB]/g,'')}</span>`;});}
+    html+=`<div class="doctor-card ${isSelected?'selected-doc':''}" onclick="selectDoctor(${idx})">
       <div class="d-flex justify-content-between align-items-start">
-        <div>
+        <div style="flex:1;">
           <div style="font-size:14px;font-weight:700;">👨‍⚕️ ${doc.name}</div>
           <div style="font-size:12px;color:#64748b;">${doc.spec}</div>
-          <div style="font-size:12px;color:var(--mohfw-green);margin-top:2px;">Next Free: ${doc.slots.nextFree||'--'} <span class="badge" style="background:#dcfce7;color:#166534;font-size:10px;">FREE</span></div>
+          <div style="font-size:12px;color:var(--mohfw-green);margin-top:2px;">⏰ Next: <b>${doc.slots.nextFree||'--'}</b> <span class="badge" style="background:#dcfce7;color:#166534;font-size:10px;">FREE</span></div>
+          <div style="font-size:11px;color:#94a3b8;">${doc.slots.booked}/${doc.slots.total} slots</div>
+          ${slotsHtml?`<div style="margin-top:6px;">${slotsHtml}</div>`:''}
         </div>
-        <div class="slot-circle" style="background:${col};">${pct}%</div>
+        <div class="d-flex flex-column align-items-end gap-2">
+          <div class="slot-circle" style="background:${col};">${pct}%</div>
+          <button class="doc-book-btn ${isSelected?'selected':''}" onclick="event.stopPropagation();bookSpecificDoctor(${idx})">
+            ${isSelected?tr('selectDoc'):'🗓️ '+tr('bookDoctor')}
+          </button>
+        </div>
       </div>
-      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">${doc.slots.booked}/${doc.slots.total} slots booked</div>
-      ${slotsHtml?`<div style="margin-top:6px;">${slotsHtml}</div>`:''}
     </div>`;
   });
   document.getElementById('doctorDisplay').innerHTML=html;
+  // Show selected doctor banner
+  const banner=document.getElementById('selectedDocBanner');
+  if(state.selectedDoctor){banner.style.display='block';banner.innerHTML=`✅ ${tr('selectDoc')}: <b>${state.selectedDoctor.name}</b> (${state.selectedDoctor.spec}) — ${state.selectedDoctor.slots.nextFree}`;}
+  else{banner.style.display='none';}
+}
+
+function selectDoctor(idx){
+  const hosp=DATA.cities[state.city].hospitals[state.hospital];
+  const doc=hosp.doctors[idx];
+  if(state.selectedDoctor&&state.selectedDoctor.name===doc.name){state.selectedDoctor=null;}
+  else{state.selectedDoctor=doc;}
+  renderDoctors();renderBestMatch();
+}
+
+function bookSpecificDoctor(idx){
+  const hosp=DATA.cities[state.city].hospitals[state.hospital];
+  state.selectedDoctor=hosp.doctors[idx];
+  renderDoctors();renderBestMatch();
+  openBooking();
 }
 
 // ===================== AI BEST MATCH =====================
@@ -521,27 +470,26 @@ function aiScore(hosp,symptom){
   const bedTypes=DATA.config.symptomMap[symptom]||["general"];
   let freeBeds=0,totalBeds=0;
   bedTypes.forEach(t=>{if(hosp.beds[t]){freeBeds+=hosp.beds[t].free;totalBeds+=hosp.beds[t].total||1;}});
-  const bedScore=totalBeds>0?freeBeds/totalBeds:0;
   const bestDoc=hosp.doctors.reduce((a,b)=>(b.slots.pct||0)<(a.slots.pct||0)?b:a,hosp.doctors[0]);
   const docScore=1-(bestDoc.slots.pct||50)/100;
   const dist=state.userGPS?haversine(state.userGPS,hosp.gps):5;
-  return bedScore*0.4+docScore*0.4+(1/Math.max(dist,0.1))*0.2;
+  return ((totalBeds>0?freeBeds/totalBeds:0)*0.4+docScore*0.4+(1/Math.max(dist,0.1))*0.2);
 }
 function renderBestMatch(){
   const hosp=DATA.cities[state.city].hospitals[state.hospital];
   const bedTypes=DATA.config.symptomMap[state.symptom]||["general"];
   let bestBed=null;
   bedTypes.forEach(t=>{if(hosp.beds[t]&&hosp.beds[t].free>0&&(!bestBed||hosp.beds[t].free>bestBed.free)){bestBed={type:t,...hosp.beds[t]};}});
-  const bestDoc=hosp.doctors.reduce((a,b)=>(b.slots.pct||0)<(a.slots.pct||0)?b:a,hosp.doctors[0]);
+  const doc=state.selectedDoctor||hosp.doctors.reduce((a,b)=>(b.slots.pct||0)<(a.slots.pct||0)?b:a,hosp.doctors[0]);
   const score=(aiScore(hosp,state.symptom)*100).toFixed(0);
   document.getElementById('bestMatchContent').innerHTML=`
     <div style="font-size:13px;">
       <div>🏥 <b>${state.hospital}</b> — Score: <span style="color:var(--mohfw-blue);">${score}/100</span></div>
       <div>🛏️ Bed: <b>${bestBed?bestBed.type.toUpperCase()+' #'+(Math.floor(Math.random()*20)+1):'General #12'}</b> — Wait: ${bestBed?.wait||'1hr'}</div>
-      <div>👨‍⚕️ <b>${bestDoc.name}</b> (${bestDoc.spec}) — ${bestDoc.slots.nextFree}</div>
-      <div>💳 Package: <b style="color:var(--mohfw-green);">₹150</b> (Bed + Doctor + Token)</div>
+      <div>👨‍⚕️ <b>${doc.name}</b> (${doc.spec}) — ${doc.slots.nextFree}${state.selectedDoctor?` <span style="color:var(--mohfw-green);font-size:11px;">✅ Your choice</span>`:''}</div>
+      <div>💳 Package: <b style="color:var(--mohfw-green);">₹150</b></div>
     </div>`;
-  state.pendingBooking={hospital:state.hospital,city:state.city,bed:bestBed?bestBed.type:'General',doctor:bestDoc.name,time:bestDoc.slots.nextFree,amount:150};
+  state.pendingBooking={hospital:state.hospital,city:state.city,bed:bestBed?bestBed.type:'General',doctor:doc.name,spec:doc.spec,time:doc.slots.nextFree,amount:150};
 }
 
 // ===================== BOOKING =====================
@@ -553,151 +501,99 @@ function openBooking(){
     <div style="background:#f0f9ff;border-radius:12px;padding:12px;font-size:13px;margin-bottom:12px;">
       <div>🏥 <b>${b.hospital}</b>, ${b.city}</div>
       <div>🛏️ Bed: ${b.bed.toUpperCase()}</div>
-      <div>👨‍⚕️ ${b.doctor} — ${b.time}</div>
+      <div>👨‍⚕️ <b>${b.doctor}</b> (${b.spec||''})</div>
+      <div>⏰ Time: <b>${b.time}</b></div>
       <div>🎫 Token: <b style="color:var(--mohfw-blue);">#${token}</b></div>
       <div>💳 Amount: <b>₹${b.amount}</b></div>
     </div>`;
   const upiUrl=`upi://pay?pa=phctrace@upi&pn=PHC-TRACE&am=${b.amount}&cu=INR&tn=Token%20${token}`;
   const hosp=DATA.cities[b.city].hospitals[b.hospital];
   document.getElementById('mapsLink').href=`https://www.google.com/maps/dir/?api=1&destination=${hosp.gps[0]},${hosp.gps[1]}`;
-  if(typeof QRCode!=='undefined'){
-    const canvas=document.getElementById('qrCanvas');
-    const ctx=canvas.getContext('2d');ctx.clearRect(0,0,160,160);
-    QRCode.toCanvas(canvas,upiUrl,{width:160,margin:1},()=>{});
-  }
+  if(typeof QRCode!=='undefined'){const canvas=document.getElementById('qrCanvas');const ctx=canvas.getContext('2d');ctx.clearRect(0,0,160,160);QRCode.toCanvas(canvas,upiUrl,{width:160,margin:1},()=>{});}
   new bootstrap.Modal(document.getElementById('bookingModal')).show();
 }
 function confirmBooking(){
-  const b=state.pendingBooking;
-  b.status='Confirmed';b.date=new Date().toLocaleString('en-IN');
-  state.bookings.push({...b});
-  bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
-  renderBookingsList();
-  showToast(`✅ Booking confirmed! Token #${b.token}`);
+  const b=state.pendingBooking;b.status='Confirmed';b.date=new Date().toLocaleString('en-IN');
+  state.bookings.push({...b});bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+  renderBookingsList();showToast(`✅ Booking confirmed! Token #${b.token}`);
 }
-function sendSMS(){showToast(`📱 SMS sent to your registered number! Token #${state.pendingBooking.token}`);}
+function sendSMS(){showToast(`📱 SMS sent! Token #${state.pendingBooking.token}`);}
 function renderBookingsList(){
   if(!state.bookings.length)return;
   let html='';
-  state.bookings.forEach(b=>{
-    html+=`<div style="border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;font-size:13px;">
-      <div class="d-flex justify-content-between"><b>${b.hospital}</b><span class="badge" style="background:#dcfce7;color:#166534;">${b.status}</span></div>
-      <div>👨‍⚕️ ${b.doctor} — ${b.time}</div>
-      <div>🎫 Token: <b>#${b.token}</b> | 💳 ₹${b.amount}</div>
-      <div style="color:#94a3b8;font-size:11px;">${b.date}</div>
-    </div>`;
-  });
+  state.bookings.forEach(b=>{html+=`<div style="border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;font-size:13px;"><div class="d-flex justify-content-between"><b>${b.hospital}</b><span class="badge" style="background:#dcfce7;color:#166534;">${b.status}</span></div><div>👨‍⚕️ <b>${b.doctor}</b> — ${b.time}</div><div>🎫 Token: <b>#${b.token}</b> | 💳 ₹${b.amount}</div><div style="color:#94a3b8;font-size:11px;">${b.date}</div></div>`;});
   document.getElementById('bookingsList').innerHTML=html;
 }
 
 // ===================== SYMPTOM =====================
-function selectSymptom(s,el){
-  state.symptom=s;
-  document.querySelectorAll('.symptom-pill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  renderAll();
-}
+function selectSymptom(s,el){state.symptom=s;document.querySelectorAll('.symptom-pill').forEach(p=>p.classList.remove('active'));el.classList.add('active');renderAll();}
 
 // ===================== VOICE =====================
 function toggleVoice(){
   if(isListening){stopVoice();return;}
-  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SpeechRecognition){showToast('❌ Voice not supported in this browser');return;}
-  recognition=new SpeechRecognition();
-  recognition.lang=state.selectedLang==='hi'?'hi-IN':'en-IN';
-  recognition.interimResults=false;recognition.maxAlternatives=1;
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){showToast('❌ Voice not supported');return;}
+  recognition=new SR();recognition.lang=LANGUAGES.find(l=>l.code===state.selectedLang)?.voiceCode||'hi-IN';recognition.interimResults=false;
   recognition.onresult=e=>{
     const t=e.results[0][0].transcript.toLowerCase();
-    document.getElementById('voiceResult').style.display='block';
-    document.getElementById('voiceResult').textContent='🎤 "'+t+'"';
-    if(t.includes('बुखार')||t.includes('fever'))selectSymptom('fever',document.querySelector('[onclick*="fever"]'));
-    else if(t.includes('दुर्घटना')||t.includes('accident'))selectSymptom('accident',document.querySelector('[onclick*="accident"]'));
-    else if(t.includes('गर्भ')||t.includes('pregnancy'))selectSymptom('pregnancy',document.querySelector('[onclick*="pregnancy"]'));
+    document.getElementById('voiceResult').style.display='block';document.getElementById('voiceResult').textContent='🎤 "'+t+'"';
+    if(/बुखार|fever|ताप|জ্বর|జ్వరం|காய்ச்சல்/.test(t))selectSymptom('fever',document.querySelector('[onclick*="fever"]'));
+    else if(/दुर्घटना|accident|ਦੁਰਘਟਨਾ|ప్రమాదం/.test(t))selectSymptom('accident',document.querySelector('[onclick*="accident"]'));
+    else if(/गर्भ|pregnancy|গর্ভ|กรรภ/.test(t))selectSymptom('pregnancy',document.querySelector('[onclick*="pregnancy"]'));
     else selectSymptom('general',document.querySelector('[onclick*="general"]'));
     stopVoice();
   };
-  recognition.onerror=()=>stopVoice();
-  recognition.start();
-  isListening=true;
-  document.getElementById('voiceBtn').classList.add('listening');
-  document.getElementById('voiceBtnText').textContent='सुन रहा हूं... (Listening)';
+  recognition.onerror=()=>stopVoice();recognition.start();isListening=true;
+  document.getElementById('voiceBtn').classList.add('listening');document.getElementById('voiceBtnText').textContent='🔴 '+tr('speakVoice')+'...';
 }
-function stopVoice(){
-  if(recognition)recognition.stop();
-  isListening=false;
-  document.getElementById('voiceBtn').classList.remove('listening');
-  document.getElementById('voiceBtnText').textContent='हिंदी में बोलें';
-}
+function stopVoice(){if(recognition)recognition.stop();isListening=false;document.getElementById('voiceBtn').classList.remove('listening');document.getElementById('voiceBtnText').textContent=tr('speakVoice');}
 
-// ===================== HOSPITALS LIST =====================
+// ===================== HOSPITALS =====================
 function renderHospitalList(filter=''){
   let html='';
   Object.entries(DATA.cities).forEach(([city,cd])=>{
     Object.entries(cd.hospitals).forEach(([name,h])=>{
       if(filter&&!name.toLowerCase().includes(filter)&&!city.toLowerCase().includes(filter))return;
       const dist=state.userGPS?haversine(state.userGPS,h.gps).toFixed(1):'--';
-      html+=`<div style="border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;" onclick="jumpToHospital('${city}','${name}')">
-        <div class="d-flex justify-content-between"><b style="font-size:13px;">${name}</b><span style="font-size:11px;color:var(--mohfw-green);">📍 ${dist}km</span></div>
-        <div style="font-size:12px;color:#64748b;">${city} • ${h.doctors.length} doctors</div>
-        <div style="font-size:11px;color:#94a3b8;">${Object.entries(h.beds).map(([t,b])=>`${t}:${b.free}/${b.total}`).join(' | ')}</div>
-      </div>`;
+      html+=`<div style="border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;" onclick="jumpToHospital('${city}','${name}')"><div class="d-flex justify-content-between"><b style="font-size:13px;">${name}</b><span style="font-size:11px;color:var(--mohfw-green);">📍 ${dist}km</span></div><div style="font-size:12px;color:#64748b;">${city} • ${h.doctors.length} doctors</div><div style="font-size:11px;color:#94a3b8;">${Object.entries(h.beds).map(([t,b])=>`${t}:${b.free}/${b.total}`).join(' | ')}</div></div>`;
     });
   });
   document.getElementById('hospitalList').innerHTML=html||'<p style="color:#94a3b8;font-size:13px;">No hospitals found</p>';
 }
 function filterHospitals(v){renderHospitalList(v.toLowerCase());}
-function jumpToHospital(city,hosp){
-  document.getElementById('citySelect').value=city;
-  state.city=city;populateHospitals();
-  document.getElementById('hospSelect').value=hosp;
-  state.hospital=hosp;
-  renderAll();
-  showTab('home',document.querySelector('.nav-item-btn'));
-}
+function jumpToHospital(city,hosp){document.getElementById('citySelect').value=city;state.city=city;populateHospitals();document.getElementById('hospSelect').value=hosp;state.hospital=hosp;renderAll();showTab('home',document.querySelector('.nav-item-btn'));}
 
 // ===================== LANGUAGE =====================
 function renderLangGrid(langs){
-  const grid=document.getElementById('langGrid');
-  grid.innerHTML=langs.map(l=>`
-    <div class="lang-card ${state.selectedLang===l.code?'selected':''}" onclick="selectLang('${l.code}','${l.name}',this)">
+  document.getElementById('langGrid').innerHTML=langs.map(l=>`
+    <div class="lang-card ${state.selectedLang===l.code?'selected':''}" onclick="selectAndApplyLang('${l.code}','${l.name}',this)">
       <div class="lang-native">${l.native}</div>
       <div class="lang-name">${l.name}</div>
       <div style="font-size:10px;color:#94a3b8;">${l.script}</div>
     </div>`).join('');
 }
-function selectLang(code,name,el){
-  state.selectedLang=code;state.selectedLangName=name;
+function selectAndApplyLang(code,name,el){
   document.querySelectorAll('.lang-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
+  applyTranslations(code);
+  renderDoctors();renderBestMatch();
+  showToast(`✅ ${name} (${LANGUAGES.find(l=>l.code===code)?.native||''}) applied!`);
 }
-function filterLangs(v){
-  const f=v.toLowerCase();
-  renderLangGrid(LANGUAGES.filter(l=>l.name.toLowerCase().includes(f)||l.native.includes(v)));
-}
-function applyLanguage(){
-  const lang=LANGUAGES.find(l=>l.code===state.selectedLang);
-  if(lang){
-    document.getElementById('voiceBtnText').textContent=state.selectedLang==='hi'?'हिंदी में बोलें':`Speak in ${lang.name}`;
-    showToast(`✅ Language set to ${lang.name} (${lang.native})`);
-  }
-}
+function filterLangs(v){renderLangGrid(LANGUAGES.filter(l=>l.name.toLowerCase().includes(v.toLowerCase())||l.native.includes(v)));}
 
 // ===================== TABS =====================
 function showTab(name,btn){
-  ['home','hospitals','bookings','language','settings'].forEach(t=>{
-    document.getElementById('tab-'+t).style.display=t===name?'block':'none';
-  });
+  ['home','hospitals','bookings','language','settings'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===name?'block':'none';});
   document.querySelectorAll('.nav-item-btn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
   if(name==='bookings')renderBookingsList();
 }
 
+// ===================== DARK MODE =====================
 function toggleDark(on){document.body.classList.toggle('dark',on);}
+
 // ===================== TOAST =====================
-function showToast(msg){
-  document.getElementById('toastMsg').textContent=msg;
-  new bootstrap.Toast(document.getElementById('toastEl'),{delay:3000}).show();
-}
+function showToast(msg){document.getElementById('toastMsg').textContent=msg;new bootstrap.Toast(document.getElementById('toastEl'),{delay:3000}).show();}
 </script>
 </body>
 </html>
